@@ -3,7 +3,8 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const { check, validationResult } = require("express-validator");
 
-const { csrfProtection, asyncHandler, userValidators } = require("./utils");
+const { loginUser, logoutUser } = require('../auth');
+const { csrfProtection, asyncHandler, userValidators, loginValidators } = require("./utils");
 const db = require("../db/models");
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -33,6 +34,7 @@ router.post(
       user.hashedPassword = hashedPassword;
       await user.save();
       //TODO: build a loginUser function
+      loginUser(req, res, user)
       res.redirect("/");
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
@@ -45,5 +47,14 @@ router.post(
     }
   })
 );
+
+router.get("/login", csrfProtection, (req, res) => {
+  res.render("user-login", {
+    title: 'Login',
+    csrfToken: req.csrfToken(),
+  })
+})
+
+
 
 module.exports = router;

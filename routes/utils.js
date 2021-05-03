@@ -29,8 +29,19 @@ const userValidators = [
     }),
 ];
 
+const loginValidators = [
+  check('username')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter your username'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter your password'),
+];
+
+
 module.exports = {
   csrfProtection,
   asyncHandler,
   userValidators,
+  loginValidators
 };

@@ -1,11 +1,11 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const GametoPlatform = sequelize.define('GametoPlatform', {
+  const GameToPlatform = sequelize.define('GameToPlatform', {
     gameId: DataTypes.INTEGER,
     platformId: DataTypes.INTEGER
   }, {});
-  GametoPlatform.associate = function(models) {
+  GameToPlatform.associate = function(models) {
     // associations can be defined here
   };
-  return GametoPlatform;
+  return GameToPlatform;
 };

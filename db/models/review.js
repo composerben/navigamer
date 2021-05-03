@@ -4,7 +4,6 @@ module.exports = (sequelize, DataTypes) => {
     gameId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER,
     rating: DataTypes.INTEGER,
-    rating: DataTypes.INTEGER,
     review: DataTypes.TEXT
   }, {});
   Review.associate = function (models) {

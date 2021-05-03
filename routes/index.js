@@ -1,9 +1,49 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
+const bcrypt = require("bcryptjs");
+const { check, validationResult } = require("express-validator");
 
+const { csrfProtection, asyncHandler, userValidators } = require("./utils");
+const db = require("../db/models");
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'a/A Express Skeleton Home' });
+router.get("/", function (req, res, next) {
+  res.render("index", { title: "a/A Express Skeleton Home" });
 });
+
+router.get("/signup", csrfProtection, (req, res, next) => {
+  const user = db.User.build();
+  res.render("user-signup", {
+    title: "Signup",
+    user,
+    csrfToken: req.csrfToken(),
+  });
+});
+
+router.post(
+  "/signup",
+  csrfProtection,
+  userValidators,
+  asyncHandler(async (req, res, next) => {
+    const { username, email, password } = req.body;
+    const user = await db.User.build({ username, email });
+
+    const validatorErrors = validationResult(req);
+    if (validatorErrors.isEmpty()) {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      user.hashedPassword = hashedPassword;
+      await user.save();
+      //TODO: build a loginUser function
+      res.redirect("/");
+    } else {
+      const errors = validatorErrors.array().map((error) => error.msg);
+      res.render("user-signup", {
+        title: "Signup",
+        user,
+        errors,
+        csrfToken: req.csrfToken(),
+      });
+    }
+  })
+);
 
 module.exports = router;

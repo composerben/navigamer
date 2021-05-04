@@ -3,8 +3,13 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const { check, validationResult } = require("express-validator");
 
-const { loginUser, logoutUser } = require('../auth');
-const { csrfProtection, asyncHandler, userValidators, loginValidators } = require("./utils");
+const { loginUser, logoutUser } = require("../auth");
+const {
+  csrfProtection,
+  asyncHandler,
+  userValidators,
+  loginValidators,
+} = require("./utils");
 const db = require("../db/models");
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -28,14 +33,13 @@ router.post(
     const { username, email, password } = req.body;
     const user = await db.User.build({ username, email });
     const validatorErrors = validationResult(req);
-    console.log(validatorErrors, "errors!!");
     if (validatorErrors.isEmpty()) {
       const hashedPassword = await bcrypt.hash(password, 10);
       user.hashedPassword = hashedPassword;
       await user.save();
       // console.log(req.body)
-      const findId = await db.User.findOne({ where: { username } })
-      loginUser(req, res, user)
+      const findId = await db.User.findOne({ where: { username } });
+      loginUser(req, res, user);
       res.redirect(`/user/${findId.id}`);
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
@@ -51,28 +55,35 @@ router.post(
 
 router.get("/login", csrfProtection, (req, res) => {
   res.render("user-login", {
-    title: 'Login',
+    title: "Login",
     csrfToken: req.csrfToken(),
-  })
-})
+  });
+});
 
-router.post("/login", csrfProtection, loginValidators, asyncHandler(async (req, res) => {
-  const { username, password } = req.body;
-  let errors = [];
+router.post(
+  "/login",
+  csrfProtection,
+  loginValidators,
+  asyncHandler(async (req, res) => {
+    const { username, password } = req.body;
+    let errors = [];
 
-  const validatorErrors = validationResult(req);
-  if (validatorErrors.isEmpty()) {
-    const user = await db.User.findOne({ where: { username }});
-    if (user !== null) {
-      const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
-      if (passwordMatch) {
-        loginUser(req, res, user);
-        const findId = await db.User.findOne({ where: { username } })
-        return res.redirect(`/user/${findId.id}`);
+    const validatorErrors = validationResult(req);
+    if (validatorErrors.isEmpty()) {
+      const user = await db.User.findOne({ where: { username } });
+      if (user !== null) {
+        const passwordMatch = await bcrypt.compare(
+          password,
+          user.hashedPassword.toString()
+        );
+        if (passwordMatch) {
+          loginUser(req, res, user);
+          const findId = await db.User.findOne({ where: { username } });
+          return res.redirect(`/user/${findId.id}`);
+        }
       }
     }
-  }
-}))
-
+  })
+);
 
 module.exports = router;

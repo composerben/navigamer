@@ -1,6 +1,13 @@
 extends layout.pug
 block content
-    form(action="/signup", method="post")
+    link(rel="stylesheet" type="text/css" href="/stylesheets/user-signup.css")
+    if errors 
+        div(class="signup-error")
+            p Oops! Something went wrong: 
+            ul 
+                each error in errors 
+                    li= error 
+    form(action="/signup", method="post" class="signup-form")
         input(type="hidden" name="_csrf" value=csrfToken)
         div
             label(for="username") Username

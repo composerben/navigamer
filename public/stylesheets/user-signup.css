@@ -1,6 +1,32 @@
+html {
+  height: 100%;
+  background-image: linear-gradient(to bottom right, rgb(177, 163, 1), white);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* align-self: center; */
+}
+
 .signup-form {
   display: flex;
+  padding: 5px 10px;
   flex-direction: column;
-  align-items: center;
   border: 4px solid black;
+  width: 50%;
 }
+
+input {
+  display: flex;
+}
+
+button {
+  margin-top: 5px;
+}
+
+/* #username {
+  display: inline;
+  justify-content: right;
+} */

@@ -33,9 +33,10 @@ router.post(
       const hashedPassword = await bcrypt.hash(password, 10);
       user.hashedPassword = hashedPassword;
       await user.save();
-      //TODO: build a loginUser function
+      // console.log(req.body)
+      const findId = await db.User.findOne({ where: { username } })
       loginUser(req, res, user)
-      res.redirect("/");
+      res.redirect(`/user/${findId.id}`);
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.render("user-signup", {
@@ -55,6 +56,23 @@ router.get("/login", csrfProtection, (req, res) => {
   })
 })
 
+router.post("/login", csrfProtection, loginValidators, asyncHandler(async (req, res) => {
+  const { username, password } = req.body;
+  let errors = [];
+
+  const validatorErrors = validationResult(req);
+  if (validatorErrors.isEmpty()) {
+    const user = await db.User.findOne({ where: { username }});
+    if (user !== null) {
+      const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
+      if (passwordMatch) {
+        loginUser(req, res, user);
+        const findId = await db.User.findOne({ where: { username } })
+        return res.redirect(`/user/${findId.id}`);
+      }
+    }
+  }
+}))
 
 
 module.exports = router;

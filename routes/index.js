@@ -27,8 +27,8 @@ router.post(
   asyncHandler(async (req, res, next) => {
     const { username, email, password } = req.body;
     const user = await db.User.build({ username, email });
-
     const validatorErrors = validationResult(req);
+    console.log(validatorErrors, "errors!!");
     if (validatorErrors.isEmpty()) {
       const hashedPassword = await bcrypt.hash(password, 10);
       user.hashedPassword = hashedPassword;

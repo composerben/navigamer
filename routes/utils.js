@@ -38,10 +38,40 @@ const loginValidators = [
     .withMessage('Please enter your password'),
 ];
 
+const gameRegEx = new RegExp(/(.)*\.(png|jpg)/i)
+
+const addGameValidators = [
+  check('gameName')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter the title of a game')
+    .isLength({ max: 255 })
+    .withMessage("Game name can't be more than 255 characters long"),
+  check('releaseDate')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter a valid date'),
+  check('developer')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter the developer of the game')
+    .isLength({ max: 255 })
+    .withMessage("Developer name can't be more than 50 characters long"),
+  check('imgUrl')
+    .exists({ checkFalsy: true })
+    .withMessage('Please enter an image url associated with the game')
+    .isLength({ max: 255 })
+    .withMessage("Developer name can't be more than 50 characters long")
+    .custom((value, { req }) => {
+      if (!gameRegEx.test(value)) {
+        throw new Error("Must be a valid image (jpg/png)");
+      }
+      return true;
+    }),
+  ];
+
 
 module.exports = {
   csrfProtection,
   asyncHandler,
   userValidators,
-  loginValidators
+  loginValidators,
+  addGameValidators
 };

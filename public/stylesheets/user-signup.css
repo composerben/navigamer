@@ -1,32 +1,88 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
-  background-image: linear-gradient(to bottom right, rgb(177, 163, 1), white);
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(50, 49, 49),
+    rgb(1, 22, 143)
+  );
+}
+
+h1 {
+  /* display: flex;
+  justify-content: center; */
+  font-family: fantasy;
+  text-transform: uppercase;
+  color: white;
 }
 
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* align-self: center; */
+  width: 600px;
+  margin: 5% auto;
 }
 
 .signup-form {
   display: flex;
-  padding: 5px 10px;
+  background: rgba(48, 101, 194, 0.3);
+  padding: 10px 10px;
   flex-direction: column;
-  border: 4px solid black;
-  width: 50%;
+
+  border: 4px solid rgb(33, 32, 32);
+  border-radius: 20px;
 }
 
-input {
-  display: flex;
+.user-info input {
+  width: 100%;
+  border-radius: 10px;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+label {
+  color: rgb(244, 244, 244);
+  text-transform: uppercase;
+  line-height: 20px;
+  font-family: monospace;
 }
 
 button {
-  margin-top: 5px;
+  background: rgb(255, 246, 245);
+  margin-top: 0.5em;
+  border: 0;
+  padding: 10px 30px;
+  border-radius: 15px;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 1em;
+  text-transform: uppercase;
 }
 
-/* #username {
-  display: inline;
-  justify-content: right;
-} */
+.signup-error p,
+ul {
+  width: 400px;
+  margin: 5% auto;
+  text-transform: uppercase;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+}
+
+.signup-error p {
+  font-size: larger;
+  text-decoration: underline;
+  padding-left: 4px;
+}
+
+ul {
+  border: 2px solid black;
+  border-radius: 10px;
+  background: rgba(211, 38, 38, 0.858);
+}
+
+li {
+  padding: 0.2em;
+  font-weight: bold;
+  list-style: inside;
+}

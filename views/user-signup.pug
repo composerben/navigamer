@@ -3,24 +3,26 @@ block content
     link(rel="stylesheet" type="text/css" href="/stylesheets/user-signup.css")
     if errors 
         div(class="signup-error")
-            p Oops! Something went wrong: 
             ul 
+                p Oops! Something went wrong: 
                 each error in errors 
                     li= error 
+    h1 Your Journey Begins Here...
     div(class="container")
         form(action="/signup", method="post" class="signup-form")
             input(type="hidden" name="_csrf" value=csrfToken)
-            div
-                label(for="username") Username
-                input(type="text" name="username" id="username")
-            div
-                label(for="email") Email
-                input(type="email" name="email" id="email")
-            div
-                label(for="password") Password
-                input(type="password" name="password" id="password")
-            div
-                label(for="confirm-password") Confirm password
-                input(type="password" name="confirmPassword" id="confirm-password")
-            div
-                button(type="submit") Sign up
+            div(class="user-info")
+                div
+                    label(for="username") Username
+                    input(type="text" name="username" id="username")
+                div
+                    label(for="email") Email
+                    input(type="email" name="email" id="email")
+                div
+                    label(for="password") Password
+                    input(type="password" name="password" id="password")
+                div
+                    label(for="confirm-password") Confirm password
+                    input(type="password" name="confirmPassword" id="confirm-password")
+                div
+                    button(type="submit") Sign up

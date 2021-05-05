@@ -12,9 +12,13 @@ const {
 } = require("./utils");
 const db = require("../db/models");
 /* GET home page. */
-router.get("/", function (req, res, next) {
-  res.render("index", { title: "a/A Express Skeleton Home" });
-});
+router.get("/", asyncHandler(async (req, res, next) => {
+  const gamesList = await db.Game.findAll({ limit: 10 })
+  res.render("index", {
+    title: "Welcome to Navigamer",
+    gamesList
+  });
+}));
 
 router.get("/signup", csrfProtection, (req, res, next) => {
   const user = db.User.build();

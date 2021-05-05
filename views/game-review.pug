@@ -1,0 +1,26 @@
+extends layout.pug
+block content
+    link(rel="stylesheet" type="text/css" href="/stylesheets/game-review.css")
+    if errors
+        div(class="login-error")
+            p Oops! Something went wrong:
+            ul
+                each error in errors
+                    li= error
+    div(class="container")
+        form(action="/games/add-game", method="post" class="new-game-form")
+            input(type="hidden" name="_csrf" value=csrfToken)
+            div
+                label(for="gameName") Game Name
+                input(type="text" name="gameName" id="gameName")
+            div
+                label(for="releaseDate") Release Date (YYYY-MM-DD)
+                input(type="releaseDate" name="releaseDate" id="releaseDate")
+            div
+                label(for="developer") Developer
+                input(type="text" name="developer" id="developer")
+            div
+                label(for="imgUrl") Image URL
+                input(type="imgUrl" name="imgUrl" id="imgUrl")
+            div
+                button(type="submit") Create Game 

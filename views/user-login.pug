@@ -1,0 +1,20 @@
+extends layout.pug
+block content
+    link(rel="stylesheet" type="text/css" href="/stylesheets/user-login.css")
+    if errors
+        div(class="login-error")
+            p Oops! Something went wrong:
+            ul
+                each error in errors
+                    li= error
+    div(class="container")
+        form(action="/login", method="post" class="login-form")
+            input(type="hidden" name="_csrf" value=csrfToken)
+            div
+                label(for="username") Username
+                input(type="text" name="username" id="username")
+            div
+                label(for="password") Password
+                input(type="password" name="password" id="password")
+            div
+                button(type="submit") Log in

@@ -6,4 +6,15 @@ html
         link(rel="shortcut icon", href="favicon.ico", type="image/x-icon")
         link(rel='stylesheet' href='/stylesheets/reset.css')
   body
+    header
+      div(class='container')
+        a(href='/')
+          img(src='logoNavigamer.jpg' alt='logo' class='logo' href='/' style='width:400px')
+        nav(class='navbar')
+          ul()
+            li(): a(class='games-link' href='/games') Games
+            li(): a(class='gameshelves-link' href='/user/:id') Gameshelves
+            li(): a(class='login-link' href='/login') Login 
+            li(): a(class='signup-link' href='/signup') Signup
+
     block content

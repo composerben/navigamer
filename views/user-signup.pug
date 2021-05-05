@@ -7,11 +7,11 @@ block content
     link(rel="stylesheet" type="text/css" href="/stylesheets/user-signup.css")
     if errors 
         div(class="signup-error")
-            ul 
+            ul(class="errors-ul") 
                 p Oops! Something went wrong: 
                 each error in errors 
-                    li= error 
-    div(class="container")
+                    li(class="error-li")= error 
+    div(class="signup-form-container")
         form(action="/signup", method="post" class="signup-form")
             h1 Your Journey Begins Here...
             input(type="hidden" name="_csrf" value=csrfToken)
@@ -29,4 +29,4 @@ block content
                     label(for="confirm-password") Confirm password
                     input(type="password" name="confirmPassword" id="confirm-password")
                 div
-                    button(type="submit") Sign up
+                    button(class="signup-button" type="submit") Sign up

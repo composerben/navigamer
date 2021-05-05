@@ -1,0 +1,15 @@
+extends layout.pug
+
+append head
+  link(rel="stylesheet" href="/stylesheets/index.css")
+
+block content
+    link(rel="stylesheet" type="text/css" href="/stylesheets/user-login.css")
+    div 
+      h1= game.gameName
+      img(src=game.imgUrl)
+      h3= game.releaseDate 
+      h3= game.developer
+      h1 Platforms
+      each platform in platforms
+        h2= platform.name

@@ -5,9 +5,13 @@ const { validationResult } = require("express-validator");
 const router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.get('/', asyncHandler(async (req, res) => {
+  const games = await db.Game.findAll({ order: ['gameName'] });
+  res.render('games', {
+    title: 'All Games',
+    games,
+  })
+}));
 
 router.get('/add-game', csrfProtection, asyncHandler(async (req, res) => {
   const game = db.Game.build();
@@ -29,7 +33,6 @@ router.post('/add-game', csrfProtection, addGameValidators, asyncHandler(async (
   const validatorErrors = validationResult(req);
   
   if (validatorErrors.isEmpty()) {
-    console.log('RAN')
     await game.save();
     res.redirect('/games')
   } else {
@@ -41,6 +44,19 @@ router.post('/add-game', csrfProtection, addGameValidators, asyncHandler(async (
       csrfToken: req.csrfToken(),
     });
   }
+}));
+
+router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
+  const game = await db.Game.findByPk(req.params.id, {
+    include: db.Platform
+  });
+  const platforms = game.Platforms
+  
+  res.render('single-game', {
+    title: 'All Games',
+    game,
+    platforms
+  })
 }));
 
 module.exports = router;

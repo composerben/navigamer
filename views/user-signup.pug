@@ -7,9 +7,9 @@ block content
                 p Oops! Something went wrong: 
                 each error in errors 
                     li= error 
-    h1 Your Journey Begins Here...
     div(class="container")
         form(action="/signup", method="post" class="signup-form")
+            h1 Your Journey Begins Here...
             input(type="hidden" name="_csrf" value=csrfToken)
             div(class="user-info")
                 div

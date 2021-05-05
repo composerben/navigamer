@@ -7,18 +7,20 @@ block content
     link(rel="stylesheet" type="text/css" href="/stylesheets/user-login.css")
     if errors
         div(class="login-error")
-            p Oops! Something went wrong:
-            ul
+            ul(class="errors-ul")
+                p Oops! Something went wrong:
                 each error in errors
-                    li= error
-    div(class="container")
+                    li(class="error-li")= error
+    div(class="login-form-container")
         form(action="/login", method="post" class="login-form")
+            h1 Jump Back In! 
             input(type="hidden" name="_csrf" value=csrfToken)
-            div
-                label(for="username") Username
-                input(type="text" name="username" id="username")
-            div
-                label(for="password") Password
-                input(type="password" name="password" id="password")
-            div
-                button(type="submit") Log in
+            div(class="login-details")
+                div
+                    label(for="username") Username
+                    input(type="text" name="username" id="username")
+                div
+                    label(for="password") Password
+                    input(type="password" name="password" id="password")
+                div
+                    button(class="login-button" type="submit") Log in

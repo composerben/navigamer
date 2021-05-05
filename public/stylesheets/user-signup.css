@@ -2,34 +2,31 @@
   box-sizing: border-box;
 }
 
-html {
+/* html {
   height: 100%;
   background-image: linear-gradient(
     to bottom right,
     rgb(50, 49, 49),
     rgb(1, 22, 143)
   );
-}
+} */
 
-h1 {
-  /* display: flex;
-  justify-content: center; */
+.signup-form h1 {
   font-family: fantasy;
   text-transform: uppercase;
   color: white;
 }
 
-.container {
+.signup-form-container {
   width: 600px;
   margin: 5% auto;
 }
 
 .signup-form {
   display: flex;
-  background: rgba(48, 101, 194, 0.3);
+  background: rgb(70, 118, 199);
   padding: 10px 10px;
   flex-direction: column;
-
   border: 4px solid rgb(33, 32, 32);
   border-radius: 20px;
 }
@@ -41,14 +38,14 @@ h1 {
   margin-bottom: 0.5em;
 }
 
-label {
+.user-info label {
   color: rgb(244, 244, 244);
   text-transform: uppercase;
   line-height: 20px;
   font-family: monospace;
 }
 
-button {
+.signup-button {
   background: rgb(255, 246, 245);
   margin-top: 0.5em;
   border: 0;
@@ -58,12 +55,18 @@ button {
   font-weight: bold;
   font-size: 1em;
   text-transform: uppercase;
+
+  transition: background-color 0.2s;
+}
+
+.signup-button:hover {
+  background-color: cornflowerblue;
 }
 
 .signup-error p,
-ul {
+.errors-ul {
   width: 400px;
-  margin: 5% auto;
+  margin: 2% auto;
   text-transform: uppercase;
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
@@ -75,13 +78,13 @@ ul {
   padding-left: 4px;
 }
 
-ul {
+.errors-ul {
   border: 2px solid black;
   border-radius: 10px;
   background: rgba(211, 38, 38, 0.858);
 }
 
-li {
+.error-li {
   padding: 0.2em;
   font-weight: bold;
   list-style: inside;

@@ -1,32 +1,82 @@
-html {
-  height: 100%;
-  background-image: linear-gradient(to bottom right, rgb(177, 163, 1), white);
+* {
+  box-sizing: border-box;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* align-self: center; */
+.login-form h1 {
+  font-family: fantasy;
+  text-transform: uppercase;
+  color: white;
+}
+
+.login-form-container {
+  width: 600px;
+  margin: 5% auto;
 }
 
 .login-form {
   display: flex;
-  padding: 5px 10px;
+  background: rgb(70, 118, 199);
+  padding: 10px 10px;
   flex-direction: column;
-  border: 4px solid black;
-  width: 50%;
+  border: 4px solid rgb(33, 32, 32);
+  border-radius: 20px;
 }
 
-input {
-  display: flex;
+.login-details input {
+  width: 100%;
+  border-radius: 10px;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
 }
 
-button {
-  margin-top: 5px;
+.login-details label {
+  color: rgb(244, 244, 244);
+  text-transform: uppercase;
+  line-height: 20px;
+  font-family: monospace;
 }
 
-/* #username {
-  display: inline;
-  justify-content: right;
-} */
+.login-button {
+  background: rgb(255, 246, 245);
+  margin-top: 0.5em;
+  border: 0;
+  padding: 10px 30px;
+  border-radius: 15px;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 1em;
+  text-transform: uppercase;
+
+  transition: background-color 0.2s;
+}
+
+.login-button:hover {
+  background-color: cornflowerblue;
+}
+
+.login-error p,
+.errors-ul {
+  width: 400px;
+  margin: 2% auto;
+  text-transform: uppercase;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+}
+
+.login-error p {
+  font-size: larger;
+  text-decoration: underline;
+  padding-left: 4px;
+}
+
+.errors-ul {
+  border: 2px solid black;
+  border-radius: 10px;
+  background: rgba(211, 38, 38, 0.858);
+}
+
+.error-li {
+  padding: 0.2em;
+  font-weight: bold;
+  list-style: inside;
+}

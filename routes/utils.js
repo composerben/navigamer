@@ -65,7 +65,7 @@ const addGameValidators = [
       }
       return true;
     }),
-  ];
+];
 
 
 module.exports = {

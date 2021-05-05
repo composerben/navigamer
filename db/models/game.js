@@ -4,7 +4,6 @@ module.exports = (sequelize, DataTypes) => {
     gameName: DataTypes.STRING,
     releaseDate: DataTypes.DATE,
     developer: DataTypes.STRING,
-    status: DataTypes.STRING,
     imgUrl: DataTypes.STRING
   }, {});
   Game.associate = function (models) {
@@ -18,9 +17,10 @@ module.exports = (sequelize, DataTypes) => {
       otherKey: 'platformId',
       foreignKey: 'gameId'
     }
-    Game.hasMany(models.Review, { foreignKey: 'gameId' })
+    Game.hasMany(models.Review, { foreignKey: 'gameId' });
     Game.belongsToMany(models.Gameshelf, shelfMapping);
     Game.belongsToMany(models.Platform, platformMapping);
+    Game.hasMany(models.Status, { foreignKey: 'gameId' });
   };
   return Game;
 };

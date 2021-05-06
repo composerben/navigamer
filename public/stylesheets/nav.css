@@ -1,8 +1,4 @@
-h1 {
-    color: #555555;
-}
-
-.container {
+.nav__container {
   width: 80%;
   margin: 0 auto;
 }
@@ -17,7 +13,7 @@ header::after {
   clear: both;
 }
 
-.logo {
+.nav__logo {
   float: left;
   margin-left: -150px;
   padding: 0px;

@@ -1,0 +1,20 @@
+#games__container {
+  display: block;
+  max-width: 100vw;
+}
+
+.body__gameCard {
+  display: inline-flex;
+  width: 250px;
+  height: 350px;
+  background-color: #2F3036;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin: 25px;
+  align-items: center;
+  overflow: hidden;
+}
+
+.body__gameCard {
+  
+}

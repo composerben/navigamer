@@ -1,13 +1,12 @@
 extends layout.pug
 
-append head
-  link(rel="stylesheet" href="/stylesheets/index.css")
+append head 
+  link(rel="stylesheet", href="stylesheets/games.css")
 
 block content
-    link(rel="stylesheet" type="text/css" href="/stylesheets/user-login.css")
-    div 
-      each game in games
-        div 
-          a(href=`../games/${game.id}`) 
-            img(src=game.imgUrl)
-            h2= game.gameName
+  div#games__container 
+    each game in games
+      div.body__gameCard 
+        a(href=`../games/${game.id}`) 
+          img(src=game.imgUrl)
+          h2= game.gameName

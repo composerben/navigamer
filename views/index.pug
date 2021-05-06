@@ -2,14 +2,24 @@ extends layout
 
 append head
   //- add page specific styles by appending to the head
-  link(rel="stylesheet" href="/stylesheets/index.css")
   link(rel="stylesheet" href="/stylesheets/main-page.css")
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  h1= title
-  div
+  div#main__title
+    h1= title
+    p This resource is designed entirely with YOU, the gamer, in mind!  We are on a mission to be your go-to website for everything gaming related!  
+    p Please help us out by adding your favorite games to our system and leaving reviews to help others grow their own collection!
+  div#mainGames__title
+    h2 10 Most Recently Reviewed Games
+  div#mainGames__container
     each game in gamesList
-      div
-        img(src=game.imgUrl)
+      div.mainBody__outsideGameCard
+        a(href=`../games/${game.id}`)
+          div.mainBody__gameCard 
+            div.mainGameCard__image 
+              img(src=game.imgUrl)
+            div.mainGameCard__text
+              h2 Average Rating
+              h2= game.gameName

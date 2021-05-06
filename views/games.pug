@@ -1,13 +1,20 @@
 extends layout.pug
 
-append head
-  link(rel="stylesheet" href="/stylesheets/index.css")
+append head 
+  link(rel="stylesheet", href="stylesheets/games.css")
 
 block content
-    link(rel="stylesheet" type="text/css" href="/stylesheets/user-login.css")
-    div 
-      each game in games
-        div 
-          a(href=`../games/${game.id}`) 
-            img(src=game.imgUrl)
-            h2= game.gameName
+  a(href="/games/add-game") 
+    div#game__announcement
+      p Please help us expand!  Click this bar to add a game!
+  div#games__title
+    h1 Games Currently In Our System
+  div#games__container 
+    each game in games
+      div.body__outsideGameCard
+        a(href=`../games/${game.id}`)
+          div.body__gameCard 
+            div.gameCard__image 
+              img(src=game.imgUrl)
+            div.gameCard__text
+              h2= game.gameName

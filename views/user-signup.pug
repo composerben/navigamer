@@ -16,17 +16,17 @@ block content
             h1 Your Journey Begins Here...
             input(type="hidden" name="_csrf" value=csrfToken)
             div(class="user-info")
-                div
+                div.loginInputField
                     label(for="username") Username
                     input(type="text" name="username" id="username")
-                div
+                div.loginInputField
                     label(for="email") Email
                     input(type="email" name="email" id="email")
-                div
+                div.loginInputField
                     label(for="password") Password
                     input(type="password" name="password" id="password")
-                div
+                div.loginInputField
                     label(for="confirm-password") Confirm password
                     input(type="password" name="confirmPassword" id="confirm-password")
-                div
+                div.loginInputField
                     button(class="signup-button" type="submit") Sign up

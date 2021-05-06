@@ -1,11 +1,8 @@
-* {
-  box-sizing: border-box;
-}
-
 .login-form h1 {
   font-family: fantasy;
   text-transform: uppercase;
   color: white;
+  margin: 10px 0;
 }
 
 .login-form-container {
@@ -34,6 +31,11 @@
   text-transform: uppercase;
   line-height: 20px;
   font-family: monospace;
+  font-weight: bold;
+}
+
+.loginInputField {
+  margin: 15px 0;
 }
 
 .login-button {

@@ -1,15 +1,23 @@
 extends layout.pug
 
-append head
-  link(rel="stylesheet" href="/stylesheets/index.css")
+append head 
+  link(rel="stylesheet", href="stylesheets/single-game.css")
 
 block content
-    link(rel="stylesheet" type="text/css" href="/stylesheets/user-login.css")
-    div 
+    div#game__title 
       h1= game.gameName
-      img(src=game.imgUrl)
-      h3= game.releaseDate 
-      h3= game.developer
-      h1 Platforms
-      each platform in platforms
-        h2= platform.name
+    div#gameBody__container
+      div#game__container
+        div#gameImg__container
+          img(src=game.imgUrl)
+        div#gameData
+          div#gameRelease
+            h2 Release Date
+            h3= game.releaseDate
+          div#gameDeveloper
+            h2 Developer
+            h3= game.developer
+          div#gamePlatforms
+            h2 Platforms
+            each platform in platforms
+              h3= platform.name

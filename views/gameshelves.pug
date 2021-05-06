@@ -4,5 +4,8 @@ append head
   link(rel="stylesheet" href="/stylesheets/gameshelves.css")
 
 block content
-
-
+  if !sessionUser
+    p PLEASE LOG IN
+  else 
+    each shelf in gameshelves 
+      h1= shelf.name

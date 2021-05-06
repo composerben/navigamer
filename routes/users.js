@@ -14,12 +14,17 @@ router.get(
   "/(\\d+)",
   asyncHandler(async (req, res, next) => {
     const sessionUser = req.session.auth;
-    const gameshelves = await db.Gameshelf.findAll({
-      where: {
-        userId: sessionUser.userId,
-      },
-    });
-    res.render("gameshelves", { gameshelves });
+    
+    if (sessionUser) {
+      const gameshelves = await db.Gameshelf.findAll({
+        where: {
+          userId: sessionUser.userId,
+        },
+      });
+      res.render("gameshelves", { gameshelves, sessionUser });
+    } 
+
+    res.redirect('/login')
   })
 );
 

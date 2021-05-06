@@ -1,7 +1,6 @@
 extends layout
 
 append head
-  link(rel="stylesheet" href="/stylesheets/index.css")
 
 block content 
   form(action='/games/:id' method='post' class='review-form')
@@ -27,4 +26,3 @@ block content
     each review in reviews 
       if (gameId === :id)
         // display reviews 
-    

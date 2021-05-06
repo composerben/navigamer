@@ -6,7 +6,9 @@ append head
 block content
   div#games__container 
     each game in games
-      div.body__gameCard 
-        a(href=`../games/${game.id}`) 
-          img(src=game.imgUrl)
-          h2= game.gameName
+      a(href=`../games/${game.id}`)
+        div.body__gameCard 
+          div.gameCard__image 
+            img(src=game.imgUrl)
+          div.gameCard__text
+            h2= game.gameName

@@ -4,6 +4,7 @@
 
 .nav__logo {
   float: left;
+  position: absolute;
   padding-left: 20px;
   padding-top: 15px;
 }
@@ -20,13 +21,13 @@ header::after {
 }
 
 nav {
-  float: left;
+  float: right;
 }
 
 nav ul {
   display: flex;
   margin: 0;
-  padding: 0;
+  padding-top: 12px;
   list-style: none;
 }
 
@@ -53,7 +54,7 @@ nav a::before {
   display: block;
   height: 2px;
   width: 0%;
-  top: 0;
+  top: 0px;
   background-color: white;
   position: absolute;
   transition: all ease-in-out 200ms;

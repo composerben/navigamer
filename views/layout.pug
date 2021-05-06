@@ -6,6 +6,7 @@ html
         link(rel="shortcut icon", href="favicon.ico", type="image/x-icon")
         link(rel='stylesheet' href='/stylesheets/reset.css')
         link(rel="stylesheet", href="/stylesheets/nav.css")
+        link(rel="stylesheet", href="/stylesheets/footer.css")
   body
     header
       div(class='nav__container')
@@ -18,4 +19,8 @@ html
             li(): a(class='login-link' href='/login') Login 
             li(): a(class='signup-link' href='/signup') Signup
 
-    block content
+  block content
+
+  footer 
+    div#footer__container
+      p I AM A PARAGRAPH

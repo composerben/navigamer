@@ -1,0 +1,34 @@
+#gameshelf__container {
+  display: flex;
+  margin: 20px;
+  width: 90%;
+  height: 700px;
+}
+
+#gameshelfLibrary__container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  width: 30%;
+  text-align: center;
+  border: 1px solid #909090;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, .5);
+}
+
+#gameshelfLibrary__container h1 {
+  margin: 10px;
+  color: #DFDFDF;
+}
+
+#gameshelfGames__container {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  width: 70%;
+}
+
+#gameshelfGames__container h1 {
+  margin: 10px;
+  color: #DFDFDF;
+}

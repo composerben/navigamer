@@ -5,6 +5,7 @@ const path = require("path");
 
 const { asyncHandler } = require("./utils");
 const db = require("../db/models");
+const session = require("express-session");
 
 router.use(express.static(path.join(__dirname, "../public")));
 router.use(express.static(path.join(__dirname, "../assets")));
@@ -16,15 +17,16 @@ router.get(
     const sessionUser = req.session.auth;
     
     if (sessionUser) {
+      console.log(sessionUser.userId);
       const gameshelves = await db.Gameshelf.findAll({
         where: {
           userId: sessionUser.userId,
         },
       });
       res.render("gameshelves", { gameshelves, sessionUser });
-    } 
-
-    res.redirect('/login')
+    } else {
+      res.redirect('/login')
+    }
   })
 );
 

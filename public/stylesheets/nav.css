@@ -1,21 +1,23 @@
 .nav__container {
   width: 80%;
+  
   margin: 0 auto;
+  position: relative;
 }
 
 .nav__logo {
   float: left;
-  margin-left: -150px;
-  padding: 0px;
+  position: absolute;
 }
 
 header {
   background: black;
+  height: 100px;
 }
 
 header::after {
   content: '';
-  display: table;
+  display: flex;
   clear: both;
 }
 
@@ -24,6 +26,7 @@ nav {
 }
 
 nav ul {
+  display: flex;
   margin: 0;
   padding: 0;
   list-style: none;

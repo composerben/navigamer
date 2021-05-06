@@ -1,8 +1,11 @@
 extends layout.pug
 
 append head
-  link(rel="stylesheet" href="/stylesheets/index.css")
+  link(rel="stylesheet" href="/stylesheets/gameshelves.css")
 
 block content
-    link(rel="stylesheet" type="text/css" href="/stylesheets/user-login.css")
-
+  if !sessionUser
+    p PLEASE LOG IN
+  else 
+    each shelf in gameshelves 
+      h1= shelf.name

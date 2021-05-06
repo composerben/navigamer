@@ -48,7 +48,7 @@ router.post(
       // console.log(req.body)
       const findId = await db.User.findOne({ where: { username } });
       loginUser(req, res, user);
-      res.redirect(`/user/${findId.id}`);
+      res.redirect(`/users/${findId.id}`);
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.render("user-signup", {
@@ -80,7 +80,7 @@ router.post("/login", csrfProtection, loginValidators, asyncHandler(async (req, 
       if (passwordMatch) {
         loginUser(req, res, user);
         const findId = await db.User.findOne({ where: { username } })
-        return res.redirect(`/user/${findId.id}`);
+        return res.redirect(`/users/${findId.id}`);
       }
     }
     errors.push('Login failed for the provided username and password');

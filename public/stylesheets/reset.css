@@ -5,13 +5,18 @@
 }
 
 body {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     to bottom right,
     rgb(50, 49, 49),
     rgb(1, 22, 143)
-  );
+  ); */
+  background-image: url("../zeldaTemple.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 a {

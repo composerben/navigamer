@@ -1,6 +1,6 @@
 #main__title {
   font-size: 22px;
-  background-color: #BA0519;
+  background-color: rgba(1, 32, 73, 0.6);
   color: #e6e3e3;
   text-align: center;
   padding-top: 10px;
@@ -16,8 +16,14 @@
   font-size: 20px;
   color: #e6e3e3;
   text-align: center;
-  margin: 35px 0 30px 0;
+  margin-top: 35px;
+  margin-bottom: 35px;
   line-height: 1.6;
+  background: rgba(0, 0, 0, .75);
+  border-radius: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
 }
 
 #mainGames__container {
@@ -25,6 +31,10 @@
   flex-wrap: wrap;
   max-width: 100vw;
   justify-content: space-around;
+  background: rgba(0, 0, 0, .5);
+  border-radius: 50px;
+  margin: auto;
+  width: 95%;
 }
 
 .mainBody__outsideGameCard {

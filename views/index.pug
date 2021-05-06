@@ -13,13 +13,14 @@ block content
     p Please help us out by adding your favorite games to our system and leaving reviews to help others grow their own collection!
   div#mainGames__title
     h2 10 Most Recently Reviewed Games
-  div#mainGames__container
-    each game in gamesList
-      div.mainBody__outsideGameCard
-        a(href=`../games/${game.id}`)
-          div.mainBody__gameCard 
-            div.mainGameCard__image 
-              img(src=game.imgUrl)
-            div.mainGameCard__text
-              h2 Average Rating
-              h2= game.gameName
+  div#test_container
+    div#mainGames__container
+      each game in gamesList
+        div.mainBody__outsideGameCard
+          a(href=`../games/${game.id}`)
+            div.mainBody__gameCard 
+              div.mainGameCard__image 
+                img(src=game.imgUrl)
+              div.mainGameCard__text
+                h2 Average Rating
+                h2= game.gameName

@@ -3,6 +3,12 @@
   margin: 0 auto;
 }
 
+.nav__logo {
+  float: left;
+  margin-left: -150px;
+  padding: 0px;
+}
+
 header {
   background: black;
 }
@@ -11,12 +17,6 @@ header::after {
   content: '';
   display: table;
   clear: both;
-}
-
-.nav__logo {
-  float: left;
-  margin-left: -150px;
-  padding: 0px;
 }
 
 nav {

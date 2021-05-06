@@ -1,8 +1,23 @@
 #main__title {
   font-size: 22px;
+  background-color: #BA0519;
+  color: #e6e3e3;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  line-height: 1.6;
+}
+
+#main__title p {
+  font-size: 20px;
+}
+
+#mainGames__title {
+  font-size: 20px;
   color: #e6e3e3;
   text-align: center;
   margin: 35px 0 30px 0;
+  line-height: 1.6;
 }
 
 #mainGames__container {

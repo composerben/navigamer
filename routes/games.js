@@ -1,8 +1,12 @@
 const express = require('express');
-const { csrfProtection, asyncHandler, addGameValidators } = require("./utils");
 const db = require("../db/models");
+const path = require('path');
+const { csrfProtection, asyncHandler, addGameValidators } = require("./utils");
 const { validationResult } = require("express-validator");
 const router = express.Router();
+
+router.use(express.static(path.join(__dirname, '../public')));
+router.use(express.static(path.join(__dirname, '../assets')));
 
 /* GET users listing. */
 router.get('/', asyncHandler(async (req, res) => {
@@ -16,7 +20,7 @@ router.get('/', asyncHandler(async (req, res) => {
 router.get('/add-game', csrfProtection, asyncHandler(async (req, res) => {
   const game = db.Game.build();
   
-  res.render('game-review', {
+  res.render('add-game', {
     title: 'Add Game',
     game,
     csrfToken: req.csrfToken()
@@ -37,7 +41,7 @@ router.post('/add-game', csrfProtection, addGameValidators, asyncHandler(async (
     res.redirect('/games')
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
-    res.render("game-review", {
+    res.render("add-game", {
       title: "Add Game",
       game,
       errors,

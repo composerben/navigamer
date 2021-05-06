@@ -1,0 +1,49 @@
+#game__title {
+  font-size: 22px;
+  color: #e6e3e3;
+  text-align: center;
+  margin: 35px 0 30px 0;
+}
+
+#gameBody__container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+#game__container {
+  margin: 20px;
+  display: flex;
+  width: 80vw;
+  height: 700px;
+  background-color: #2F3036;
+  border: 1px solid #909090;
+  border-radius: 5px;
+  padding: 20px;
+  align-content: center;
+}
+
+#gameImg__container {
+  display: block;
+  height: 90%;
+  width: auto;
+  align-content: center;
+  justify-content: center;
+  align-self: center;
+}
+
+#gameImg__container img {
+  height: 100%;
+  width: auto;
+}
+
+#gameData {
+  display: grid;
+  flex-direction: column;
+  margin: 20px;
+}
+
+#gameRelease, #gameDeveloper, #gamePlatforms {
+  display: inline-block;
+  margin: 20px;
+}

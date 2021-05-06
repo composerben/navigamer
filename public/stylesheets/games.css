@@ -5,6 +5,20 @@
   margin: 35px 0 30px 0;
 }
 
+#games__title p {
+  font-size: 20px;
+}
+
+#game__announcement {
+  font-size: 22px;
+  background-color: #BA0519;
+  color: #e6e3e3;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  line-height: 1.6;
+}
+
 .add-game {
   margin-top: 15px;
   width: 150px;

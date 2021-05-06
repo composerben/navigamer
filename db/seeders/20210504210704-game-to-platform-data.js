@@ -36,6 +36,19 @@ module.exports = {
       { gameId: 9, platformId: 7, createdAt: new Date(), updatedAt: new Date() }, // Red Dead
       { gameId: 9, platformId: 8, createdAt: new Date(), updatedAt: new Date() },
       { gameId: 10, platformId: 1, createdAt: new Date(), updatedAt: new Date() }, // Truck Sim
+      { gameId: 11, platformId: 1, createdAt: new Date(), updatedAt: new Date() }, // COD: WarZone
+      { gameId: 11, platformId: 2, createdAt: new Date(), updatedAt: new Date() },
+      { gameId: 11, platformId: 3, createdAt: new Date(), updatedAt: new Date() },
+      { gameId: 11, platformId: 4, createdAt: new Date(), updatedAt: new Date() },
+      { gameId: 11, platformId: 5, createdAt: new Date(), updatedAt: new Date() },
+      { gameId: 12, platformId: 6, createdAt: new Date(), updatedAt: new Date() }, // Animal Crossing: New Horizons
+      { gameId: 13, platformId: 3, createdAt: new Date(), updatedAt: new Date() }, // Spider-Man: Miles Morales
+      { gameId: 13, platformId: 5, createdAt: new Date(), updatedAt: new Date() },
+      { gameId: 14, platformId: 1, createdAt: new Date(), updatedAt: new Date() }, // Devil May Cry 5
+      { gameId: 14, platformId: 2, createdAt: new Date(), updatedAt: new Date() },
+      { gameId: 14, platformId: 3, createdAt: new Date(), updatedAt: new Date() },
+      { gameId: 14, platformId: 4, createdAt: new Date(), updatedAt: new Date() },
+      { gameId: 14, platformId: 5, createdAt: new Date(), updatedAt: new Date() },
     ], {});
   },
 

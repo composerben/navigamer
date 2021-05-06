@@ -1,13 +1,11 @@
 .nav__container {
-  width: 80%;
-  
-  margin: 0 auto;
-  position: relative;
+  width: 95%;
 }
 
 .nav__logo {
   float: left;
-  position: absolute;
+  padding-left: 20px;
+  padding-top: 15px;
 }
 
 header {
@@ -22,7 +20,7 @@ header::after {
 }
 
 nav {
-  float: right;
+  float: left;
 }
 
 nav ul {
@@ -33,7 +31,7 @@ nav ul {
 }
 
 nav li {
-  display: inline-block;
+  display: flex;
   margin-left: 70px;
   padding-top: 25px;
   position: relative;

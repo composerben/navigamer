@@ -13,10 +13,8 @@ router.use(express.static(path.join(__dirname, "../assets")));
 router.get("/", asyncHandler(async (req, res) => {
   const gameshelfId = parseInt(req.params.id, 10);
   const sessionUser = req.session.auth;
-  console.log(sessionUser);
   
   if (sessionUser) {
-    console.log(sessionUser.userId);
     const gameshelves = await db.Gameshelf.findAll();
     res.render("gameshelves", { gameshelves, sessionUser });
   } else {
@@ -26,10 +24,8 @@ router.get("/", asyncHandler(async (req, res) => {
 router.get("/:id", asyncHandler(async (req, res) => {
     const gameshelfId = parseInt(req.params.id, 10);
     const sessionUser = req.session.auth;
-    console.log(sessionUser);
     
     if (sessionUser) {
-      console.log(sessionUser.userId);
       const gameshelves = await db.Gameshelf.findAll({
         where: {
           userId: gameshelfId,
@@ -41,5 +37,12 @@ router.get("/:id", asyncHandler(async (req, res) => {
     }
   })
 );
+
+router.post("/", asyncHandler(async (req, res) => {
+  // const gameshelfId = parseInt(req.params.id, 10);
+  // const sessionUser = req.session.auth;
+  // console.log(sessionUser);
+  console.log(req.body)
+}));
 
 module.exports = router;

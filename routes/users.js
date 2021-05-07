@@ -31,6 +31,15 @@ router.get("/:id", asyncHandler(async (req, res) => {
           userId: gameshelfId,
         },
       });
+
+      const gameshelfGames =  db.Gameshelf.findAll({
+        where: {
+          userId: gameshelfId,
+        },
+        // include: db.
+      });
+
+
       res.render("gameshelves", { gameshelves, sessionUser });
     } else {
       res.redirect('/login')

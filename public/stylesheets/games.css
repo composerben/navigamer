@@ -18,6 +18,7 @@
 
 #game__announcement {
   font-size: 22px;
+  font-weight: bold;
   background-color: rgba(167, 1, 1, 0.6);
   color: #e6e3e3;
   text-align: center;

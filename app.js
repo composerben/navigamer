@@ -9,6 +9,7 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const gamesRouter = require("./routes/games");
+const { restoreUser } = require('./auth.js')
 
 const app = express();
 
@@ -34,19 +35,7 @@ app.use(
   })
 );
 
-app.use((req, res, next) => {
-  let { history } = req.session;
-  if (!history) {
-    history = [];
-    req.session.history = history;
-  }
-
-  const url = `${req.protocol}://${req.get("host")}${req.originalUrl}`;
-
-  history.unshift(url);
-
-  next();
-});
+app.use(restoreUser)
 
 // create Session table if it doesn't already exist
 store.sync();

@@ -3,10 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const { check, validationResult } = require("express-validator");
 const path = require('path');
-
-router.use(express.static(path.join(__dirname, '../public')));
-router.use(express.static(path.join(__dirname, '../assets')));
-
+const db = require("../db/models");
 const { loginUser, logoutUser } = require("../auth");
 const {
   csrfProtection,
@@ -14,10 +11,15 @@ const {
   userValidators,
   loginValidators,
 } = require("./utils");
-const db = require("../db/models");
+
+router.use(express.static(path.join(__dirname, '../public')));
+router.use(express.static(path.join(__dirname, '../assets')));
+
 /* GET home page. */
+
 router.get("/", asyncHandler(async (req, res, next) => {
   const gamesList = await db.Game.findAll({ limit: 10 })
+
   res.render("index", {
     title: "Welcome to Navigamer",
     gamesList
@@ -28,7 +30,6 @@ router.get("/signup", csrfProtection, (req, res, next) => {
   const user = db.User.build();
   res.render("user-signup", {
     title: "Signup",
-    user,
     csrfToken: req.csrfToken(),
   });
 });
@@ -45,7 +46,6 @@ router.post(
       const hashedPassword = await bcrypt.hash(password, 10);
       user.hashedPassword = hashedPassword;
       await user.save();
-      // console.log(req.body)
       const findId = await db.User.findOne({ where: { username } });
       loginUser(req, res, user);
       res.redirect(`/users/${findId.id}`);

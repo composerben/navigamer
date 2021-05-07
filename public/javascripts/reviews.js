@@ -7,18 +7,20 @@ const reviewsContainer = document.querySelector(".user-reviews");
 const reviewList = document.querySelector(".review-list");
 
 const postReview = (data) => {
-
   // const newReviewContainer = document.createElement("div");
   // newReviewContainer.className = "review-container";
-  reviewText.value = '';
-  reviewRating.value = '0';
+  reviewText.value = "";
+  reviewRating.value = "0";
   const newLame = document.createElement("li");
   const newRating = document.createElement("li");
   const newReview = document.createElement("li");
   // newReview.appendChild(document.createTextNode(review));
-  newLame.innerHTML = `${data.userLame}'s Review`
+  newLame.innerHTML = `${data.userLame}'s Review`;
+  newLame.classList.add("new-review__username");
   newRating.innerHTML = data.rating + "/10";
+  newRating.classList.add("new-review__rating");
   newReview.innerHTML = data.review;
+  newReview.classList.add("new-review__review");
   reviewList.appendChild(newLame);
   reviewList.appendChild(newRating);
   reviewList.appendChild(newReview);
@@ -32,7 +34,7 @@ const submitReview = async (event) => {
 
   const formData = new FormData(reviewForm);
   const review = formData.get("review-text");
-  const rating = formData.get("rating-score")
+  const rating = formData.get("rating-score");
   try {
     const res = await fetch(`/games/${gameId}`, {
       method: "POST",
@@ -46,13 +48,11 @@ const submitReview = async (event) => {
     }
     const data = await res.json();
     postReview(data);
-  }
-  catch (e) {
+  } catch (e) {
     const errorJSON = await e.json();
     if (errorJSON) {
-      document.querySelector('.review-error').innerHTML = `${errorJSON.msg}`;
-    }
-    else {
+      document.querySelector(".review-error").innerHTML = `${errorJSON.msg}`;
+    } else {
       console.error(e);
       alert("Please completely fill out your review before clicking submit :)");
     }

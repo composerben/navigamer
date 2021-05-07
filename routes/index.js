@@ -3,10 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const { check, validationResult } = require("express-validator");
 const path = require('path');
-
-router.use(express.static(path.join(__dirname, '../public')));
-router.use(express.static(path.join(__dirname, '../assets')));
-
+const db = require("../db/models");
 const { loginUser, logoutUser } = require("../auth");
 const {
   csrfProtection,
@@ -14,12 +11,19 @@ const {
   userValidators,
   loginValidators,
 } = require("./utils");
-const db = require("../db/models");
+
+router.use(express.static(path.join(__dirname, '../public')));
+router.use(express.static(path.join(__dirname, '../assets')));
+
 /* GET home page. */
+
 router.get("/", asyncHandler(async (req, res, next) => {
   const gamesList = await db.Game.findAll({ limit: 10 })
+  const userId = req.session.auth.userId
+  
   res.render("index", {
     title: "Welcome to Navigamer",
+    userId,
     gamesList
   });
 }));

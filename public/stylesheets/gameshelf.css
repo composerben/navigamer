@@ -7,6 +7,8 @@
 
 #gameshelfLibrary__container {
   display: flex;
+  position: relative;
+  color: #DFDFDF;
   flex-direction: column;
   margin: 20px;
   width: 30%;
@@ -18,7 +20,37 @@
 
 #gameshelfLibrary__container h1 {
   margin: 10px;
-  color: #DFDFDF;
+  font-size: 2rem;
+}
+
+#addGameshelf__container {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  bottom: 0;
+  padding: 20px 0;
+  justify-self: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.gameshelf__div {
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.gameshelf__div:hover {
+  background: rgba(0, 0, 0, .75);
+}
+
+.gameshelfCollection__container {
+  padding: 10px 0;
+}
+
+.gameshelfCollection__container h2 {
+  font-size: 1.5rem;
 }
 
 #gameshelfGames__container {

@@ -17,7 +17,11 @@ block content
               h2= shelf.name
         div#addGameshelf__container
           h2 New Gameshelf 
-          input(type="text", name="addGameshelf" id='newGameShelf__input')
+          input(type="text", name="addGameshelf" id='newGameShelf__input' required)
           button(type="submit" id="addGameshelf__btn") Create Gameshelf
+          div#addGame
+            a(href="/games") 
+              h1 +
+              h2 Add Game
       div#gameshelfGames__container
         h1 Games

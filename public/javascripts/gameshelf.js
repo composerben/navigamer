@@ -1,5 +1,6 @@
 const addShelfBtn = document.querySelector('#addGameshelf__btn');
 const shelfName__input = document.querySelector('#newGameShelf__input')
+const shelfContainer = document.querySelector('.gameshelfCollection__container');
 
 // Create a gameshelf
 async function createShelf(inputValue) {
@@ -11,10 +12,18 @@ async function createShelf(inputValue) {
     },
     body: JSON.stringify(data)
   })
-  // console.log(response)
   const json = await response.json();
-  console.log(json)
-  return json;
+  console.log(json);
+  
+  const div = document.createElement('div');
+  const title = document.createElement('h2')
+  title.innerText = json.name;
+  console.log(title)
+  div.appendChild(title);
+  div.classList.add('gameshelf__div')
+  console.log(div)
+  shelfContainer.appendChild(div)
+  // SOMEHOW LIMIT SINGLE SPACES
 }
 
 addShelfBtn.addEventListener('click', (event) => {

@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-
 const path = require("path");
 
 const { asyncHandler } = require("./utils");
@@ -21,6 +20,7 @@ router.get("/", asyncHandler(async (req, res) => {
     res.redirect('/login')
   }
 }));
+
 router.get("/:id", asyncHandler(async (req, res) => {
     const gameshelfId = parseInt(req.params.id, 10);
     const sessionUser = req.session.auth;

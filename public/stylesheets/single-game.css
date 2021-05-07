@@ -16,7 +16,7 @@
   display: flex;
   width: 80vw;
   height: 700px;
-  background-color: #2F3036;
+  background-color: #2f3036;
   border: 1px solid #909090;
   border-radius: 5px;
   padding: 20px;
@@ -43,7 +43,13 @@
   margin: 20px;
 }
 
-#gameRelease, #gameDeveloper, #gamePlatforms {
+#gameRelease,
+#gameDeveloper,
+#gamePlatforms {
   display: inline-block;
   margin: 20px;
+}
+
+#footer__container {
+  position: relative;
 }

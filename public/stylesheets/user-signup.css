@@ -86,3 +86,7 @@
   font-weight: bold;
   list-style: inside;
 }
+
+#footer__container {
+  position: relative;
+}

@@ -77,6 +77,10 @@ router.get(
     const game = await db.Game.findByPk(req.params.id, {
       include: [db.Platform, db.Review],
     });
+    // console.log("******************", game.Reviews[0].userId);
+    const userId = game.Reviews[0].userId;
+    const user = await db.User.findByPk(userId);
+    const userLame = user.username;
     const gameId = req.params.id;
     const platforms = game.Platforms;
     const reviews = game.Reviews;
@@ -87,16 +91,21 @@ router.get(
       platforms,
       reviews,
       gameId,
+      userLame,
     });
   })
 );
 
 router.post(
   "/:id(\\d+)",
-  csrfProtection,
   addReviewValidators,
   asyncHandler(async (req, res) => {
-    const { gameId, userId, rating, review } = req.body;
+    const { gameId, rating, review } = req.body;
+    const { userId } = req.session.auth;
+    const user = await db.User.findByPk(userId);
+    const userLame = user.username;
+
+    // console.log("***********", user);
 
     const gameReview = db.Review.build({
       gameId,
@@ -106,17 +115,19 @@ router.post(
     });
 
     const validatorErrors = validationResult(req);
+    console.log(validatorErrors);
 
     if (validatorErrors.isEmpty()) {
       await gameReview.save();
-      return; //Ehhhhh?????
+      // res.redirect(`/games/${gameId}`);
+      res.json({ review, rating, userLame });
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
-      res.render("add-game", {
-        title: "Add Game",
-        game,
+      // console.log("**************", errors);
+      res.render("single-game", {
+        title: "Game Page",
+        gameReview,
         errors,
-        csrfToken: req.csrfToken(),
       });
     }
   })

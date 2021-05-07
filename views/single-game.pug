@@ -35,7 +35,7 @@ block content
         textarea(class="review-text" name="review-text", cols="30", rows="10")
       div
         label(for='rating-score') Your rating: 
-        select(name="rating-score" required)
+        select(class="rating-score" name="rating-score" required)
           option(value="0" disabled selected) --Please select a rating-- 
           option(value="1") 1
           option(value="2") 2
@@ -49,8 +49,10 @@ block content
           option(value="10") 10
         button(class="review-button" type='submit' data-id=`${gameId}`) Post Review
       div(class="user-reviews") 
-        ul User Reviews
-          each review in reviews 
+        ul(class="review-list") User Reviews
+          each review in reviews
+            li= `${userLame}'s Review` 
+            li= `${review.rating}/10`
             li= review.review
           
            

@@ -75,14 +75,16 @@ router.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res) => {
     const game = await db.Game.findByPk(req.params.id, {
-      include: db.Platform,
+      include: [db.Platform, db.Review],
     });
     const platforms = game.Platforms;
+    const reviews = game.Reviews;
 
     res.render("single-game", {
       title: "All Games",
       game,
       platforms,
+      reviews,
     });
   })
 );
@@ -98,7 +100,7 @@ router.post(
       gameId,
       userId,
       rating,
-      review
+      review,
     });
 
     const validatorErrors = validationResult(req);

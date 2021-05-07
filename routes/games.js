@@ -77,6 +77,7 @@ router.get(
     const game = await db.Game.findByPk(req.params.id, {
       include: [db.Platform, db.Review],
     });
+    const gameId = req.params.id;
     const platforms = game.Platforms;
     const reviews = game.Reviews;
 
@@ -85,6 +86,7 @@ router.get(
       game,
       platforms,
       reviews,
+      gameId,
     });
   })
 );

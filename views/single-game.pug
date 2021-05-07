@@ -2,6 +2,7 @@ extends layout.pug
 
 append head 
   link(rel="stylesheet", href="stylesheets/single-game.css")
+  script(src="/javascripts/reviews.js" type="module" defer)
 
 block content
   div#game__title 
@@ -29,10 +30,10 @@ block content
           each error in errors
             li(class="error-li")= error
     form(action='/games/:id' method='post' class='review-form')
-      div 
+      div(class="review__add") 
         label(for='review-text') Write a review! 
-        textarea(name="review-text", cols="30", rows="10")
-      div 
+        textarea(class="review-text" name="review-text", cols="30", rows="10")
+      div
         label(for='rating-score') Your rating: 
         select(name="rating-score" required)
           option(value="0" disabled selected) --Please select a rating-- 
@@ -46,9 +47,11 @@ block content
           option(value="8") 8
           option(value="9") 9 
           option(value="10") 10
-      //- div 
-      //-   button(type='submit') Post Review
-      //-   each review in reviews 
-      //-     if (gameId === :id)
+        button(class="review-button" type='submit' data-id=`${gameId}`) Post Review
+      div(class="user-reviews") 
+        ul User Reviews
+          each review in reviews 
+            li= review.review
+          
            
 

@@ -39,10 +39,29 @@ router.get("/:id", asyncHandler(async (req, res) => {
 );
 
 router.post("/", asyncHandler(async (req, res) => {
-  // const gameshelfId = parseInt(req.params.id, 10);
-  // const sessionUser = req.session.auth;
-  // console.log(sessionUser);
-  console.log(req.body)
+  const userId = req.session.auth.userId
+
+  const { name } = req.body;
+
+  const gameshelf = db.Gameshelf.build({
+    name,
+    userId
+  });
+
+  // const validatorErrors = validationResult(req);
+  
+  // if (validatorErrors.isEmpty()) {
+    await gameshelf.save();
+    res.json({ name, userId })
+    // res.redirect('/users/')
+  // } else {
+  //   const errors = validatorErrors.array().map((error) => error.msg);
+  //   res.render("add-game", {
+  //     title: "Add Game",
+  //     game,
+  //     errors,
+  //     csrfToken: req.csrfToken(),
+  //   });
 }));
 
 module.exports = router;

@@ -1,17 +1,16 @@
-window.addEventListener("load", (event) => {
+window.addEventListener("load", (event) => {});
 
-});
+const getReview = (text) => {
+  const reviewsContainer = document.querySelector(".reviews__container");
 
-const getReview = text => {
-  const reviews = document.querySelector('.reviews');
-
-  text.reviews.forEach((review) => {
-    const newReviewContainer = document.createElement('div');
-    newReview.className = 'review-container';
-    const newReview = document.createElement('p');
+  text.reviewsContainer.forEach((review) => {
+    const newReviewContainer = document.createElement("div");
+    newReviewContainer.className = "review-container";
+    const newReview = document.createElement("p");
     newReview.appendChild(document.createTextNode(review));
     newReviewContainer.appendChild(newReview);
-    reviews.appendChild(newReviewContainer)
-  })
+    reviews.appendChild(newReviewContainer);
+  });
+};
 
-}
+module.exports = { getReview };

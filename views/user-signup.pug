@@ -4,12 +4,12 @@ append head
 
 block content
     link(rel="stylesheet" type="text/css" href="/stylesheets/user-signup.css")
-    if errors 
+    if errors
         div(class="signup-error")
-            ul(class="errors-ul") 
-                p Oops! Something went wrong: 
-                each error in errors 
-                    li(class="error-li")= error 
+            ul(class="errors-ul")
+                p Oops! Something went wrong:
+                each error in errors
+                    li(class="error-li")= error
     div(class="signup-form-container")
         form(action="/signup", method="post" class="signup-form")
             h1 Your Journey Begins Here...
@@ -29,3 +29,5 @@ block content
                     input(type="password" name="confirmPassword" id="confirm-password")
                 div.loginInputField
                     button(class="signup-button" type="submit") Sign up
+                div
+                    a(class="demo-button" href='/demo-login') Demo

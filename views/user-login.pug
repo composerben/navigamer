@@ -12,7 +12,7 @@ block content
                     li(class="error-li")= error
     div(class="login-form-container")
         form(action="/login", method="post" class="login-form")
-            h1 Jump Back In! 
+            h1 Jump Back In!
             input(type="hidden" name="_csrf" value=csrfToken)
             div(class="login-details")
                 div.loginInputField
@@ -23,3 +23,5 @@ block content
                     input(type="password" name="password" id="password")
                 div.loginInputField
                     button(class="login-button" type="submit") Log in
+                div
+                    a(class="demo-button" href='/demo-login') Demo

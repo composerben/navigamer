@@ -30,33 +30,33 @@ const userValidators = [
 ];
 
 const loginValidators = [
-  check('username')
+  check("username")
     .exists({ checkFalsy: true })
-    .withMessage('Please enter your username'),
-  check('password')
+    .withMessage("Please enter your username"),
+  check("password")
     .exists({ checkFalsy: true })
-    .withMessage('Please enter your password'),
+    .withMessage("Please enter your password"),
 ];
 
-const gameRegEx = new RegExp(/(.)*\.(png|jpg)/i)
+const gameRegEx = new RegExp(/(.)*\.(png|jpg)/i);
 
 const addGameValidators = [
-  check('gameName')
+  check("gameName")
     .exists({ checkFalsy: true })
-    .withMessage('Please enter the title of a game')
+    .withMessage("Please enter the title of a game")
     .isLength({ max: 255 })
     .withMessage("Game name can't be more than 255 characters long"),
-  check('releaseDate')
+  check("releaseDate")
     .exists({ checkFalsy: true })
-    .withMessage('Please enter a valid date'),
-  check('developer')
+    .withMessage("Please enter a valid date"),
+  check("developer")
     .exists({ checkFalsy: true })
-    .withMessage('Please enter the developer of the game')
+    .withMessage("Please enter the developer of the game")
     .isLength({ max: 255 })
     .withMessage("Developer name can't be more than 50 characters long"),
-  check('imgUrl')
+  check("imgUrl")
     .exists({ checkFalsy: true })
-    .withMessage('Please enter an image url associated with the game')
+    .withMessage("Please enter an image url associated with the game")
     .isLength({ max: 255 })
     .withMessage("Developer name can't be more than 50 characters long")
     .custom((value, { req }) => {
@@ -67,11 +67,20 @@ const addGameValidators = [
     }),
 ];
 
+const addReviewValidators = [
+  check("rating")
+    .exists({ checkFalsy: true })
+    .withMessage("Please give a rating"),
+  check("review")
+    .exists({ checkFalsy: true })
+    .withMessage("Please type a review"),
+];
 
 module.exports = {
   csrfProtection,
   asyncHandler,
   userValidators,
   loginValidators,
-  addGameValidators
+  addGameValidators,
+  addReviewValidators,
 };

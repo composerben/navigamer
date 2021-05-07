@@ -16,12 +16,16 @@ html
           ul()
             li(): a(class='games-link' href='/games') Games
             li(): a(class='gameshelves-link' href=`/users/`) Gameshelves
-            li(): a(class='login-link' href='/login') Login 
+          if sessionUser
+            li(): a(class='logout-link' href='/logout') Sign Out
+          else
+            li(): a(class="demo-user" href='/demo-login') Demo
+            li(): a(class='login-link' href='/login') Login
             li(): a(class='signup-link' href='/signup') Signup
 
   block content
 
-  footer 
+  footer
     div#footer__container
       div#footer__containerText
         h2 Add Github link & contributers here

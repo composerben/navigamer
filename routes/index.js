@@ -19,11 +19,9 @@ router.use(express.static(path.join(__dirname, '../assets')));
 
 router.get("/", asyncHandler(async (req, res, next) => {
   const gamesList = await db.Game.findAll({ limit: 10 })
-  const userId = req.session.auth.userId
-  
+
   res.render("index", {
     title: "Welcome to Navigamer",
-    userId,
     gamesList
   });
 }));
@@ -32,7 +30,6 @@ router.get("/signup", csrfProtection, (req, res, next) => {
   const user = db.User.build();
   res.render("user-signup", {
     title: "Signup",
-    user,
     csrfToken: req.csrfToken(),
   });
 });
@@ -49,7 +46,6 @@ router.post(
       const hashedPassword = await bcrypt.hash(password, 10);
       user.hashedPassword = hashedPassword;
       await user.save();
-      // console.log(req.body)
       const findId = await db.User.findOne({ where: { username } });
       loginUser(req, res, user);
       res.redirect(`/users/${findId.id}`);

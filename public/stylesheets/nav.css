@@ -1,4 +1,5 @@
 .navbar{
+  margin-top: 7px;
   display: flex;
   align-items: center;
   height: 50px;
@@ -10,14 +11,16 @@
 }
 
 .nav__logo {
+  display: flex;
   float: left;
-  margin-left: -150px;
+  margin-top: 7px;
+  margin-left: -125px;
   padding: 0px;
 }
 
 header {
   background: black;
-  height: 85px;
+  height: 90px;
 }
 
 header::after {

@@ -79,14 +79,23 @@ router.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res) => {
     const sessionUser = req.session.auth;
+
     const game = await db.Game.findByPk(req.params.id, {
       include: [db.Platform, db.Review],
     });
-    // console.log("******************", game.Reviews[0].userId);
-    //------FIX SO THAT GAMES W/O REVIEWS STILL RENDER-----//
-    const userId = game.Reviews[0].userId;
-    const user = await db.User.findByPk(userId);
-    const userLame = user.username;
+
+    let userId;
+    let user;
+    let userLame = [];
+
+    if (game.Reviews[0] !== undefined) {
+      for (i = 0; i < game.Reviews.length; i++) {
+        userId = game.Reviews[i].userId;
+        user = await db.User.findByPk(userId);
+        userLame.push(user.username);
+      }
+    }
+
     const gameId = req.params.id;
     const platforms = game.Platforms;
     const reviews = game.Reviews;

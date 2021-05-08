@@ -83,6 +83,7 @@ router.get(
       include: [db.Platform, db.Review],
     });
     // console.log("******************", game.Reviews[0].userId);
+    //------FIX SO THAT GAMES W/O REVIEWS STILL RENDER-----//
     const userId = game.Reviews[0].userId;
     const user = await db.User.findByPk(userId);
     const userLame = user.username;

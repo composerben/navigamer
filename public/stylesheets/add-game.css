@@ -1,5 +1,5 @@
 #addGameBody__container {
-  color: #E6E3E3;
+  color: #e6e3e3;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -20,9 +20,11 @@
 
 .addGame__container {
   display: flex;
-  border: 1px solid #909090;
-  border-radius: 5px;
+  border: 3px solid #909090;
+  border-radius: 10px;
   padding: 5px 20px;
+  background: rgb(70, 118, 199);
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.509);
 }
 
 .addGame__inputBlock {
@@ -35,10 +37,21 @@
 
 .addGame__inputBlock input {
   margin-top: 5px;
+  height: 40px;
+  border-radius: 10px;
 }
 
 #addGame__btn {
   font-weight: bold;
   border-radius: 10px;
   height: 30px;
+  transition: background-color 0.2s;
+}
+
+#addGame__btn:hover {
+  background-color: rgb(53, 222, 73);
+}
+
+#footer__container {
+  position: relative;
 }

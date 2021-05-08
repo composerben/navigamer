@@ -15,20 +15,20 @@ block content
         h1 Games
     div#gameshelf__container
       div#gameshelfLibrary__container
-        if gameshelves
-          each shelf in gameshelves 
-            div.gameshelfCollection__container
+        div.gameshelfCollection__container
+          if gameshelves
+            each shelf in gameshelves
               div.gameshelf__div
                 h2= shelf.name
-        else 
-          p This gameshelf has no collections!
+          else 
+            p This gameshelf has no collections!
         div#addGameshelf__container
         if gameshelfOwner
           h2 New Gameshelf 
           input(type="text", name="addGameshelf" id='newGameShelf__input' required)
           button(type="submit" id="addGameshelf__btn") Create Gameshelf
           div#addGame
-            a(href="/games") 
+            a(href=`/users/${user.id}/add-games-to-gameshelf`) 
               h1 +
               h2 Add Game
       div#gameshelfGames__container

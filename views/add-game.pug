@@ -10,24 +10,27 @@ block content
             ul
                 each error in errors
                     li= error
-    div#addGameBody__container
-        h1 Add A Game
-        div.addGame__container
-            form(action="/games/add-game", method="post" class="new-game-form")
-                input(type="hidden" name="_csrf" value=csrfToken)
-                div.addGame__inputBlock
-                    label(for="gameName") Game Name
-                    input(type="text" name="gameName" id="gameName")
-                div.addGame__inputBlock
-                    label(for="releaseDate") Release Date (YYYY-MM-DD)
-                    input(type="releaseDate" name="releaseDate" id="releaseDate")
-                div.addGame__inputBlock
-                    label(for="developer") Developer
-                    input(type="text" name="developer" id="developer")
-                div.addGame__inputBlock
-                    label(for="imgUrl") Image URL
-                    input(type="imgUrl" name="imgUrl" id="imgUrl")
-                div.addGame__inputBlock
-                    label(for="imgUrl") Available Platforms
-                div.addGame__inputBlock
-                    button#addGame__btn(type="submit") Submit Game
+    if user
+        div#addGameBody__container
+            h1 Add A Game
+            div.addGame__container
+                form(action="/games/add-game", method="post" class="new-game-form")
+                    input(type="hidden" name="_csrf" value=csrfToken)
+                    div.addGame__inputBlock
+                        label(for="gameName") Game Name
+                        input(type="text" name="gameName" id="gameName")
+                    div.addGame__inputBlock
+                        label(for="releaseDate") Release Date (YYYY-MM-DD)
+                        input(type="releaseDate" name="releaseDate" id="releaseDate")
+                    div.addGame__inputBlock
+                        label(for="developer") Developer
+                        input(type="text" name="developer" id="developer")
+                    div.addGame__inputBlock
+                        label(for="imgUrl") Image URL
+                        input(type="imgUrl" name="imgUrl" id="imgUrl")
+                    div.addGame__inputBlock
+                        label(for="imgUrl") Available Platforms
+                    div.addGame__inputBlock
+                        button#addGame__btn(type="submit") Submit Game
+    else 
+        h1 Please log in to add a game!

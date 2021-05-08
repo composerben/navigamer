@@ -1,0 +1,17 @@
+extends layout.pug
+
+append head 
+  link(rel="stylesheet", href="stylesheets/add-game-to-gameshelf.css")
+
+block content
+  div#games__title
+    h1 Games Currently In Our System
+  div#games__container 
+    each game in games
+      div.body__outsideGameCard
+        a(href=`../../games/${game.id}`)
+          div.body__gameCard 
+            div.gameCard__image 
+              img(src=game.imgUrl)
+            div.gameCard__text
+              h2= game.gameName

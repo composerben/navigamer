@@ -15,9 +15,9 @@ html
         nav(class='navbar')
           ul()
             li(): a(class='games-link' href='/games') Games
-            li(): a(class='gameshelves-link' href=`/users/`) Gameshelves
           if sessionUser
             li(): a(class='logout-link' href='/logout') Sign Out
+            li(): a(class='gameshelves-link' href=`/users/${user.id}`) Gameshelves
           else
             li(): a(class="demo-user" href='/demo-login') Demo
             li(): a(class='login-link' href='/login') Login

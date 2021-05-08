@@ -6,43 +6,46 @@ const { asyncHandler } = require("./utils");
 const db = require("../db/models");
 const session = require("express-session");
 const { requireAuth } = require("../auth");
+const { Console } = require("console");
 
 router.use(express.static(path.join(__dirname, "../public")));
 router.use(express.static(path.join(__dirname, "../assets")));
 
-router.get("/", requireAuth, asyncHandler(async (req, res) => {
-  const sessionUser = req.session.auth;
+// router.get("/", requireAuth, asyncHandler(async (req, res) => {
+//   const sessionUser = req.session.auth;
+//   const user = await db.User.findByPk(sessionUser.userId)
+//   let gameshelves = await db.Gameshelf.findAll({
+//     where: {
+//       userId: sessionUser.userId,
+//     },
+//   });
   
-  const user = await db.User.findByPk(sessionUser.userId)
-  let gameshelves = await db.Gameshelf.findAll({
-    where: {
-      userId: sessionUser.userId,
-    },
-  });
+//   let gameshelfOwner = true;
   
-  let gameshelfOwner = true;
+//   if (gameshelves.length < 1) {
+//     gameshelves = false;
+//   }
 
-  if (gameshelves.length < 1) {
-    gameshelves = false;
-  }
+//   // console.log(!gameshelves)
 
-  if (!gameshelves) {
-    res.render("gameshelves", { gameshelfOwner, sessionUser })
-  } else {
-    res.render("gameshelves", { gameshelfOwner, gameshelves, sessionUser })
-  }
-}));
+//   if (!gameshelves) {
+//     res.render("gameshelves", { gameshelfOwner, sessionUser })
+//   } else {
+//     const gameshelf = gameshelves
+//     // console.log(gameshelf)
+//     res.render("gameshelves", { gameshelf, gameshelfOwner, gameshelves, sessionUser })
+//   }
+// }));
 
 router.post("/", asyncHandler(async (req, res) => {
   const userId = req.session.auth.userId
 
   const { name } = req.body;
-
   const gameshelf = db.Gameshelf.build({
     name,
     userId
   });
-
+  // console.log(gameshelf)
   // const validatorErrors = validationResult(req);
   
   // if (validatorErrors.isEmpty()) {
@@ -70,22 +73,51 @@ router.get("/:id", requireAuth, asyncHandler(async (req, res) => {
     },
     include: db.Game
   });
+
   
   let gameshelfOwner = false;
   if (gameshelfId === sessionUser.userId) {
     gameshelfOwner = true;
   }
-
+  
   if (gameshelves.length < 1) {
     gameshelves = false;
   }
-
+  console.log(gameshelves)
+  
   if (!gameshelves) {
     res.render("gameshelves", { gameshelfOwner, sessionUser })
   } else {
     const gameshelf = gameshelves[0].Games
-    res.render("gameshelves", { gameshelfOwner, gameshelf, sessionUser })
+    res.render("gameshelves", { gameshelves, gameshelfOwner, gameshelf, sessionUser })
   }
+}));
+
+router.get("/:id/add-games-to-gameshelf", requireAuth, asyncHandler(async (req, res) => {
+  const gameshelfId = parseInt(req.params.id, 10);
+  const sessionUser = req.session.auth;
+  
+  const games = await db.Game.findAll({ order: ["gameName"] });
+
+  res.render('gameshelf-add-game', {
+    games
+  });
+  // let gameshelfOwner = false;
+  // if (gameshelfId === sessionUser.userId) {
+  //   gameshelfOwner = true;
+  // }
+  
+  // if (gameshelves.length < 1) {
+  //   gameshelves = false;
+  // }
+  // console.log(gameshelves)
+  
+  // if (!gameshelves) {
+  //   res.render("gameshelves", { gameshelfOwner, sessionUser })
+  // } else {
+  //   const gameshelf = gameshelves[0].Games
+  //   res.render("gameshelves", { gameshelves, gameshelfOwner, gameshelf, sessionUser })
+  // }
 }));
 
 module.exports = router;

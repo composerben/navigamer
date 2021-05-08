@@ -19,9 +19,11 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const games = await db.Game.findAll({ order: ["gameName"] });
+    const sessionUser = req.session.auth;
     res.render("games", {
       title: "All Games",
       games,
+      sessionUser
     });
   })
 );
@@ -31,11 +33,12 @@ router.get(
   csrfProtection,
   asyncHandler(async (req, res) => {
     const game = db.Game.build();
-
+    const sessionUser = req.session.auth;
     res.render("add-game", {
       title: "Add Game",
       game,
       csrfToken: req.csrfToken(),
+      sessionUser,
     });
   })
 );
@@ -46,7 +49,7 @@ router.post(
   addGameValidators,
   asyncHandler(async (req, res) => {
     const { gameName, releaseDate, developer, imgUrl } = req.body;
-
+    const sessionUser = req.session.auth;
     const game = db.Game.build({
       gameName,
       releaseDate,
@@ -66,6 +69,7 @@ router.post(
         game,
         errors,
         csrfToken: req.csrfToken(),
+        sessionUser,
       });
     }
   })
@@ -74,6 +78,7 @@ router.post(
 router.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res) => {
+    const sessionUser = req.session.auth;
     const game = await db.Game.findByPk(req.params.id, {
       include: [db.Platform, db.Review],
     });
@@ -92,6 +97,7 @@ router.get(
       reviews,
       gameId,
       userLame,
+      sessionUser,
     });
   })
 );

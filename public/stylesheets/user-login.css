@@ -1,5 +1,4 @@
 .login-form h1 {
-  font-family: fantasy;
   text-transform: uppercase;
   color: white;
   margin: 10px 0;
@@ -17,10 +16,12 @@
   flex-direction: column;
   border: 4px solid rgb(33, 32, 32);
   border-radius: 20px;
+  box-shadow: 0 0 20px 20px rgba(255, 255, 255, 0.7);
 }
 
 .login-details input {
   width: 100%;
+  height: 40px;
   border-radius: 10px;
   padding: 0.5em;
   margin-bottom: 0.5em;
@@ -30,7 +31,6 @@
   color: rgb(244, 244, 244);
   text-transform: uppercase;
   line-height: 20px;
-  font-family: monospace;
   font-weight: bold;
 }
 
@@ -44,7 +44,6 @@
   border: 0;
   padding: 10px 30px;
   border-radius: 15px;
-  font-family: monospace;
   font-weight: bold;
   font-size: 1em;
   text-transform: uppercase;
@@ -83,6 +82,10 @@
   list-style: inside;
 }
 
+#footer__container {
+  position: relative;
+}
+
 .demo-button {
   display: flex;
   background: rgb(98, 197, 56);
@@ -102,4 +105,4 @@
 
 .demo-button:hover {
   background-color:darkgreen;
-}
+

@@ -31,9 +31,9 @@ block content
             li(class="error-li")= error
     form(action='/games/:id' method='post' class='review-form')
       div(class="review__add") 
-        label(for='review-text') Write a review! 
+        h1(for='review-text') Write a review! 
         textarea(class="review-text" name="review-text", cols="30", rows="10")
-      div
+      div(class="ratings__container")
         label(for='rating-score') Your rating: 
         select(class="rating-score" name="rating-score" required)
           option(value="0" disabled selected) --Please select a rating-- 
@@ -48,12 +48,13 @@ block content
           option(value="9") 9 
           option(value="10") 10
         button(class="review-button" type='submit' data-id=`${gameId}`) Post Review
-      div(class="user-reviews") 
-        ul(class="review-list") User Reviews
+      div(class="user-reviews")
+        h2(class="reviews__h2") User Reviews
+        ul(class="review-list")
           each review in reviews
-            li= `${userLame}'s Review` 
-            li= `${review.rating}/10`
-            li= review.review
+            li(class="new-review__username")= `${userLame}'s Review` 
+            li(class="new-review__rating")= `${review.rating}/10`
+            li(class="new-review__review")= review.review
           
            
 

@@ -1,6 +1,6 @@
 #game__title {
   font-size: 22px;
-  color: #e6e3e3;
+  color: #ffffff;
   text-align: center;
   margin: 35px 0 30px 0;
 }
@@ -16,7 +16,7 @@
   display: flex;
   width: 80vw;
   height: 700px;
-  background-color: #2F3036;
+  background-color: #2f3036;
   border: 1px solid #909090;
   border-radius: 5px;
   padding: 20px;
@@ -39,11 +39,87 @@
 
 #gameData {
   display: grid;
-  flex-direction: column;
+  /* flex-direction: column; */
   margin: 20px;
 }
 
-#gameRelease, #gameDeveloper, #gamePlatforms {
+#gameRelease,
+#gameDeveloper,
+#gamePlatforms {
   display: inline-block;
   margin: 20px;
+}
+
+.reviews__container {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 70vw;
+  height: 700px;
+  background-color: #0c0832;
+  border: 1px solid #909090;
+  border-radius: 5px;
+  padding: 20px;
+  color: white;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-text {
+  border-radius: 20px;
+}
+
+.ratings__container {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.ratings__container label {
+  font-size: 25px;
+  font-weight: bold;
+  height: 30px;
+  padding: 0 5px;
+}
+
+.ratings__container button {
+  transition: background-color 0.2s;
+  font-size: large;
+  margin-left: 5px;
+  font-weight: bold;
+}
+
+.ratings__container button:hover {
+  background-color: rgb(92, 149, 255);
+}
+
+.review__add {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviews__h2 {
+  text-decoration: underline;
+}
+
+.review-list {
+  margin-top: 5px;
+}
+
+.new-review__username {
+  font-size: 17px;
+}
+
+.new-review__rating,
+.new-review__review {
+  list-style: none;
+  margin: 5px 0 0 5px;
+}
+
+#footer__container {
+  position: relative;
 }

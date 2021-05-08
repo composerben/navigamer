@@ -101,7 +101,7 @@ router.post("/login", csrfProtection, loginValidators, asyncHandler(async (req, 
 
 router.get('/logout', (req, res) => {
   logoutUser(req, res);
-  res.redirect('/');
+  return req.session.save(() => res.redirect('/'));
 });
 
 ////////// Demo Account
@@ -111,15 +111,15 @@ router.get("/demo-login", asyncHandler(async (req, res) => {
   const username = "demoUser";
   const password = "password";
 
-    const user = await db.User.findOne({ where: { username } });
-    if (user !== null) {
-      const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
-      if (passwordMatch) {
-        loginUser(req, res, user);
-        const findId = await db.User.findOne({ where: { username } })
-        return req.session.save(() => res.redirect(`/users/${findId.id}`))
-      }
+  const user = await db.User.findOne({ where: { username } });
+  if (user !== null) {
+    const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
+    if (passwordMatch) {
+      loginUser(req, res, user);
+      const findId = await db.User.findOne({ where: { username } })
+      return req.session.save(() => res.redirect(`/users/${findId.id}`))
     }
+  }
 }));
 
 module.exports = router;

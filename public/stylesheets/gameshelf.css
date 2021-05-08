@@ -8,14 +8,14 @@
 #gameshelfLibrary__container {
   display: flex;
   position: relative;
-  color: #DFDFDF;
+  color: #dfdfdf;
   flex-direction: column;
   margin: 20px;
   width: 30%;
   text-align: center;
   border: 1px solid #909090;
   border-radius: 5px;
-  background: rgba(0, 0, 0, .5);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 #gameshelfLibrary__container h1 {
@@ -32,7 +32,7 @@
   justify-self: center;
   text-align: center;
   margin-left: auto;
-  margin-right: auto
+  margin-right: auto;
 }
 
 .gameshelf__div {
@@ -42,7 +42,7 @@
 }
 
 .gameshelf__div:hover {
-  background: rgba(0, 0, 0, .75);
+  background: rgba(0, 0, 0, 0.75);
 }
 
 .gameshelfCollection__container {
@@ -62,5 +62,9 @@
 
 #gameshelfGames__container h1 {
   margin: 10px;
-  color: #DFDFDF;
+  color: #dfdfdf;
+}
+
+#footer__container {
+  position: relative;
 }

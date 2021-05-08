@@ -1,3 +1,6 @@
+window.addEventListener('click', (event) => {
+  console.log(event.target);
+
 const addShelfBtn = document.querySelector('#addGameshelf__btn');
 const shelfName__input = document.querySelector('#newGameShelf__input')
 const shelfContainer = document.querySelector('.gameshelfCollection__container');
@@ -30,4 +33,5 @@ addShelfBtn.addEventListener('click', (event) => {
   event.preventDefault();
   
   createShelf(shelfName__input.value)
+})
 })

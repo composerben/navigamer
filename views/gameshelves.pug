@@ -8,14 +8,22 @@ block content
   if !sessionUser
     p PLEASE LOG IN
   else
+    div#title__block
+      div#gameshelves__text
+        h1 Gameshelves
+      div#games__text
+        h1 Games
     div#gameshelf__container
       div#gameshelfLibrary__container
-        h1 Gameshelves
-        each shelf in gameshelves 
-          div.gameshelfCollection__container
-            div.gameshelf__div
-              h2= shelf.name
+        if gameshelves
+          each shelf in gameshelves 
+            div.gameshelfCollection__container
+              div.gameshelf__div
+                h2= shelf.name
+        else 
+          p This gameshelf has no collections!
         div#addGameshelf__container
+        if gameshelfOwner
           h2 New Gameshelf 
           input(type="text", name="addGameshelf" id='newGameShelf__input' required)
           button(type="submit" id="addGameshelf__btn") Create Gameshelf
@@ -24,5 +32,14 @@ block content
               h1 +
               h2 Add Game
       div#gameshelfGames__container
-        h1 Games
-        //- each game in gameshelf
+        if gameshelf
+          each game in gameshelf
+            div.body__outsideGameCard
+              a(href='../games/#{game.id}')
+                div.body__gameCard 
+                  div.gameCard__image 
+                    img(src=game.imgUrl)
+                  div.gameCard__text
+                    h2= game.gameName
+        else 
+          h2 No games to display!

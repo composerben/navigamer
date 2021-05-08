@@ -5,47 +5,33 @@ const path = require("path");
 const { asyncHandler } = require("./utils");
 const db = require("../db/models");
 const session = require("express-session");
+const { requireAuth } = require("../auth");
 
 router.use(express.static(path.join(__dirname, "../public")));
 router.use(express.static(path.join(__dirname, "../assets")));
 
-router.get("/", asyncHandler(async (req, res) => {
-  const gameshelfId = parseInt(req.params.id, 10);
+router.get("/", requireAuth, asyncHandler(async (req, res) => {
   const sessionUser = req.session.auth;
   
-  if (sessionUser) {
-    const gameshelves = await db.Gameshelf.findAll();
-    res.render("gameshelves", { gameshelves, sessionUser });
+  const user = await db.User.findByPk(sessionUser.userId)
+  let gameshelves = await db.Gameshelf.findAll({
+    where: {
+      userId: sessionUser.userId,
+    },
+  });
+  
+  let gameshelfOwner = true;
+
+  if (gameshelves.length < 1) {
+    gameshelves = false;
+  }
+
+  if (!gameshelves) {
+    res.render("gameshelves", { gameshelfOwner, sessionUser })
   } else {
-    res.redirect('/login')
+    res.render("gameshelves", { gameshelfOwner, gameshelves, sessionUser })
   }
 }));
-
-router.get("/:id", asyncHandler(async (req, res) => {
-    const gameshelfId = parseInt(req.params.id, 10);
-    const sessionUser = req.session.auth;
-    
-    if (sessionUser) {
-      const gameshelves = await db.Gameshelf.findAll({
-        where: {
-          userId: gameshelfId,
-        },
-      });
-
-      const gameshelfGames =  db.Gameshelf.findAll({
-        where: {
-          userId: gameshelfId,
-        },
-        // include: db.
-      });
-
-
-      res.render("gameshelves", { gameshelves, sessionUser });
-    } else {
-      res.redirect('/login')
-    }
-  })
-);
 
 router.post("/", asyncHandler(async (req, res) => {
   const userId = req.session.auth.userId
@@ -71,6 +57,35 @@ router.post("/", asyncHandler(async (req, res) => {
   //     errors,
   //     csrfToken: req.csrfToken(),
   //   });
+}));
+
+router.get("/:id", requireAuth, asyncHandler(async (req, res) => {
+  const gameshelfId = parseInt(req.params.id, 10);
+  const sessionUser = req.session.auth;
+  
+  const user = await db.User.findByPk(sessionUser.userId)
+  let gameshelves = await db.Gameshelf.findAll({
+    where: {
+      userId: gameshelfId,
+    },
+    include: db.Game
+  });
+  
+  let gameshelfOwner = false;
+  if (gameshelfId === sessionUser.userId) {
+    gameshelfOwner = true;
+  }
+
+  if (gameshelves.length < 1) {
+    gameshelves = false;
+  }
+
+  if (!gameshelves) {
+    res.render("gameshelves", { gameshelfOwner, sessionUser })
+  } else {
+    const gameshelf = gameshelves[0].Games
+    res.render("gameshelves", { gameshelfOwner, gameshelf, sessionUser })
+  }
 }));
 
 module.exports = router;

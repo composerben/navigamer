@@ -13,18 +13,17 @@ block content
         h1 Gameshelves
       div#games__text
         h1 Games
-    div#gameshelf__container
+    div(data-id=`${userId}`)#gameshelf__container
       div#gameshelfLibrary__container
         div.gameshelfCollection__container
           if gameshelves
-            each shelf in gameshelves
-              div.gameshelf__div
-                h2= shelf.name
+            each shelf, i in gameshelves
+              div(data-id=`${gameshelfIdsArr[i]}` class='gameshelf__div')
+                h2(data-id=`${gameshelfIdsArr[i]}`)= `${shelf.name}`
           else 
             p This gameshelf has no collections!
         div#addGameshelf__container
         if gameshelfOwner
-          h2 New Gameshelf 
           input(type="text", name="addGameshelf" id='newGameShelf__input' required)
           button(type="submit" id="addGameshelf__btn") Create Gameshelf
           div#addGame

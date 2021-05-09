@@ -70,7 +70,8 @@ router.get("/:id/add-games-to-gameshelf", requireAuth, asyncHandler(async (req, 
   const games = await db.Game.findAll({ order: ["gameName"] });
 
   res.render('gameshelf-add-game', {
-    games
+    games,
+    sessionUser,
   });
 }));
 

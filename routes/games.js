@@ -34,11 +34,16 @@ router.get(
   asyncHandler(async (req, res) => {
     const game = db.Game.build();
     const sessionUser = req.session.auth;
+    const platforms = await db.Platform.findAll();
+    const primaryPlatforms = platforms.splice(0, 6);
+
     res.render("add-game", {
       title: "Add Game",
       game,
       csrfToken: req.csrfToken(),
       sessionUser,
+      platforms,
+      primaryPlatforms
     });
   })
 );
@@ -48,7 +53,7 @@ router.post(
   csrfProtection,
   addGameValidators,
   asyncHandler(async (req, res) => {
-    const { gameName, releaseDate, developer, imgUrl } = req.body;
+    const { gameName, releaseDate, developer, imgUrl, platformId } = req.body;
     const sessionUser = req.session.auth;
     const game = db.Game.build({
       gameName,
@@ -61,6 +66,27 @@ router.post(
 
     if (validatorErrors.isEmpty()) {
       await game.save();
+      const gameId = game.id
+      if (platformId.length > 1) {
+        async function savePlatforms(input) {
+          input.forEach(async (element) => {
+            const gameToPlatform = db.GameToPlatform.build({
+                  gameId,
+                  platformId: element
+                })
+                console.log(gameToPlatform);
+                await gameToPlatform.save();
+          })
+        }
+        savePlatforms(platformId);
+      } else {
+        const gameToPlatform = db.GameToPlatform.build({
+          platformId,
+          gameId
+        })
+        await gameToPlatform.save();
+      }
+      // console.log(gameToPlatform);
       res.redirect("/games");
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);

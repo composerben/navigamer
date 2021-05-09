@@ -16,8 +16,8 @@ html
           ul()
             li(): a(class='games-link' href='/games') Games
           if sessionUser
-            li(): a(class='logout-link' href='/logout') Sign Out
             li(): a(class='gameshelves-link' href=`/users/${user.id}`) Gameshelves
+            li(): a(class='logout-link' href='/logout') Sign Out
           else
             li(): a(class="demo-user" href='/demo-login') Demo
             li(): a(class='login-link' href='/login') Login

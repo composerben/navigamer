@@ -3,31 +3,34 @@ extends layout.pug
 append head
 
 block content
-    link(rel="stylesheet" type="text/css" href="/stylesheets/user-signup.css")
-    if errors
-        div(class="signup-error")
-            ul(class="errors-ul")
-                p Oops! Something went wrong:
-                each error in errors
-                    li(class="error-li")= error
-    div(class="signup-form-container")
-        form(action="/signup", method="post" class="signup-form")
-            h1 Your Journey Begins Here...
-            input(type="hidden" name="_csrf" value=csrfToken)
-            div(class="user-info")
-                div.loginInputField
-                    label(for="username") Username
-                    input(type="text" name="username" id="username")
-                div.loginInputField
-                    label(for="email") Email
-                    input(type="email" name="email" id="email")
-                div.loginInputField
-                    label(for="password") Password
-                    input(type="password" name="password" id="password")
-                div.loginInputField
-                    label(for="confirm-password") Confirm password
-                    input(type="password" name="confirmPassword" id="confirm-password")
-                div.loginInputField
-                    button(class="signup-button" type="submit") Sign up
-                div
-                    a(class="demo-button" href='/demo-login') Demo
+	link(rel="stylesheet" type="text/css" href="/stylesheets/user-signup.css")
+	if errors
+		div.errorContainer
+			div(class="signup-error")
+				ul(class="errors-ul")
+					p Oops! Something went wrong:
+					each error in errors
+							li(class="error-li")= error
+	div(class="signup-form-container")
+		form(action="/signup", method="post" class="signup-form")
+			h1 Your Journey Begins Here...
+			input(type="hidden" name="_csrf" value=csrfToken)
+			div(class="user-info")
+				div.loginInputField
+					label(for="username") Username
+					input(type="text" name="username" id="username")
+				div.loginInputField
+					label(for="email") Email
+					input(type="email" name="email" id="email")
+				div.loginInputField
+					label(for="password") Password
+					input(type="password" name="password" id="password")
+				div.loginInputField
+					label(for="confirm-password") Confirm password
+					input(type="password" name="confirmPassword" id="confirm-password")
+				div.buttonContainer
+					div.signupButtons
+						button(class="signup-button" type="submit") Sign up
+					div.demoButton
+						a(class="demo-link" href='/demo-login')
+							button(class="signup-button" type="button") Demo

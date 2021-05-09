@@ -61,7 +61,8 @@
   border: 1px solid #909090;
   border-radius: 5px;
   padding: 20px;
-  box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.447);
+  /* box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.447); */
+  box-shadow: 0 0 5px 5px #e6e3e340;
 }
 
 .gameCard__text {

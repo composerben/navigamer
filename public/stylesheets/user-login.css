@@ -2,6 +2,7 @@
   text-transform: uppercase;
   color: white;
   margin: 10px 0;
+  padding-left: 170px;
 }
 
 .login-form-container {
@@ -16,7 +17,7 @@
   flex-direction: column;
   border: 4px solid rgb(33, 32, 32);
   border-radius: 20px;
-  box-shadow: 0 0 20px 20px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 30px 6px rgba(0, 0, 0, 0.85);
 }
 
 .login-details input {
@@ -38,11 +39,30 @@
   margin: 15px 0;
 }
 
+.buttonContainer {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  padding-right: 140px;
+}
+
+.demo-link {
+  display: flex;
+  width: 0px;
+  text-decoration: none;
+}
+
+.loginButtons, .demoButton {
+  margin: 15px 0;
+  overflow: none;
+}
+
 .login-button {
-  background: rgb(255, 246, 245);
+  background: rgb(255, 255, 255);
   margin-top: 0.5em;
   border: 0;
   padding: 10px 30px;
+  margin: 0 20px;
   border-radius: 15px;
   font-weight: bold;
   font-size: 1em;
@@ -52,57 +72,73 @@
 }
 
 .login-button:hover {
-  background-color: cornflowerblue;
+  background-color: rgba(34, 255, 0, 0.7);;
 }
 
 .login-error p,
 .errors-ul {
+  color: white;
   width: 400px;
   margin: 2% auto;
   text-transform: uppercase;
-  font-family: "Courier New", Courier, monospace;
+  font-family: sans-serif;
   font-weight: bold;
 }
 
 .login-error p {
   font-size: larger;
-  text-decoration: underline;
-  padding-left: 4px;
+  /* text-decoration: underline; */
+  padding-left: 52px;
 }
 
 .errors-ul {
   border: 2px solid black;
   border-radius: 10px;
-  background: rgba(211, 38, 38, 0.858);
+  background: rgba(255, 0, 0, 0.858);
 }
 
 .error-li {
   padding: 0.2em;
   font-weight: bold;
   list-style: inside;
+  margin: 2%;
+  margin-left: 4%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #footer__container {
   position: relative;
 }
 
-.demo-button {
+/* a {
+  text-decoration: none;
+} */
+
+/* .demo-button {
   display: flex;
-  background: rgb(98, 197, 56);
+  background: rgb(255, 255, 255);
   color: black;
+  padding-top: 2em;
   margin-top: 0.5em;
+  margin-left: 20px;
   border: 0;
   padding: 5px 15px;
   justify-content: center;
   border-radius: 15px;
   font-family: monospace;
   font-weight: bold;
+  font-weight: bold;
   font-size: 1em;
   text-transform: uppercase;
   transition: background-color 0.2s;
   text-decoration: none;
-}
+} */
 
 .demo-button:hover {
-  background-color: darkgreen;
+  background-color: rgba(34, 255, 0, 0.7);
+}
+
+.errorContainer {
+  padding: 20px 0px 0px 0px;
+  margin: 5px;
 }

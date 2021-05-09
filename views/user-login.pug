@@ -3,25 +3,27 @@ extends layout.pug
 append head
 
 block content
-    link(rel="stylesheet" type="text/css" href="/stylesheets/user-login.css")
-    if errors
-        div(class="login-error")
-            ul(class="errors-ul")
-                p Oops! Something went wrong:
-                each error in errors
-                    li(class="error-li")= error
-    div(class="login-form-container")
-        form(action="/login", method="post" class="login-form")
-            h1 Jump Back In!
-            input(type="hidden" name="_csrf" value=csrfToken)
-            div(class="login-details")
-                div.loginInputField
-                    label(for="username") Username
-                    input(type="text" name="username" id="username")
-                div.loginInputField
-                    label(for="password") Password
-                    input(type="password" name="password" id="password")
-                div.loginInputField
-                    button(class="login-button" type="submit") Log in
-                div
-                    a(class="demo-button" href='/demo-login') Demo
+  link(rel="stylesheet" type="text/css" href="/stylesheets/user-login.css")
+  if errors
+    div(class="login-error")
+      ul(class="errors-ul")
+        p Oops! Something went wrong:
+        each error in errors
+          li(class="error-li")= error
+  div(class="login-form-container")
+    form(action="/login", method="post" class="login-form")
+      h1 Jump Back In!
+      input(type="hidden" name="_csrf" value=csrfToken)
+      div(class="login-details")
+        div.loginInputField
+          label(for="username") Username
+          input(type="text" name="username" id="username")
+        div.loginInputField
+          label(for="password") Password
+          input(type="password" name="password" id="password")
+        div.buttonContainer
+          div.loginButtons
+            button(class="login-button" type="submit") Log in
+          div.demoButton
+            a(class="demo-link" href='/demo-login')
+              button(class="login-button" type="button") Demo

@@ -9,32 +9,6 @@ const { requireAuth } = require("../auth");
 router.use(express.static(path.join(__dirname, "../public")));
 router.use(express.static(path.join(__dirname, "../assets")));
 
-// router.get("/", requireAuth, asyncHandler(async (req, res) => {
-//   const sessionUser = req.session.auth;
-//   const user = await db.User.findByPk(sessionUser.userId)
-//   let gameshelves = await db.Gameshelf.findAll({
-//     where: {
-//       userId: sessionUser.userId,
-//     },
-//   });
-  
-//   let gameshelfOwner = true;
-  
-//   if (gameshelves.length < 1) {
-//     gameshelves = false;
-//   }
-
-//   // console.log(!gameshelves)
-
-//   if (!gameshelves) {
-//     res.render("gameshelves", { gameshelfOwner, sessionUser })
-//   } else {
-//     const gameshelf = gameshelves
-//     // console.log(gameshelf)
-//     res.render("gameshelves", { gameshelf, gameshelfOwner, gameshelves, sessionUser })
-//   }
-// }));
-
 router.post("/", asyncHandler(async (req, res) => {
   const userId = req.session.auth.userId
 
@@ -47,8 +21,7 @@ router.post("/", asyncHandler(async (req, res) => {
   await gameshelf.save();
   const gameshelfId = gameshelf.id
   // console.log('**************', id)
-    res.json({ name, userId, gameshelfId })
-
+  res.json({ name, userId, gameshelfId })
 }));
 
 router.get("/:id", requireAuth, asyncHandler(async (req, res) => {

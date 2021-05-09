@@ -19,7 +19,7 @@ block content
           if gameshelves
             each shelf, i in gameshelves
               div(data-id=`${gameshelfIdsArr[i]}` class='gameshelf__div')
-                h2(data-id=`${gameshelfIdsArr[i]}`)= `${shelf.name}`
+                h2(data-id=`${gameshelfIdsArr[i]}` class='gameshelf__h2')= `${shelf.name}`
           else 
             p This gameshelf has no collections!
         div#addGameshelf__container
@@ -34,7 +34,7 @@ block content
         if gameshelf
           each game in gameshelf
             div.body__outsideGameCard
-              a(href='../games/#{game.id}')
+              a(href=`/games/${game.id}`)
                 div.body__gameCard 
                   div.gameCard__image 
                     img(src=game.imgUrl)

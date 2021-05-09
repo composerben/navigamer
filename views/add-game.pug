@@ -29,7 +29,17 @@ block content
                         label(for="imgUrl") Image URL
                         input(type="imgUrl" name="imgUrl" id="imgUrl")
                     div.addGame__inputBlock
-                        label(for="imgUrl") Available Platforms
+                        label Available Platforms
+                        each platform in primaryPlatforms
+                            div.primaryPlatform__checkbox
+                                label= platform.name
+                                input(type="checkbox" value=platform.id)
+                        each platform in platforms
+                            div.platform__checkbox--hidden
+                                label(for="platformId")= platform.name
+                                input(type="checkbox" name="platformId" value=platform.id)
+                            
+                        //- input(type="checkbox" name=platform[1].name value=platform[1].id)= platform[1].name
                     div.addGame__inputBlock
                         button#addGame__btn(type="submit") Submit Game
     else 

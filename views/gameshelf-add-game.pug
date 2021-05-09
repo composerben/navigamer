@@ -1,7 +1,7 @@
 extends layout.pug
 
 append head 
-  link(rel="stylesheet", href="stylesheets/add-game-to-gameshelf.css")
+  link(rel="stylesheet", href="/stylesheets/add-game-to-gameshelf.css")
 
 block content
   div#games__title
@@ -9,9 +9,8 @@ block content
   div#games__container 
     each game in games
       div.body__outsideGameCard
-        a(href=`../../games/${game.id}`)
-          div.body__gameCard 
-            div.gameCard__image 
-              img(src=game.imgUrl)
-            div.gameCard__text
-              h2= game.gameName
+        div.body__gameCard 
+          div.gameCard__image 
+            img(src=game.imgUrl)
+          div.gameCard__text
+            h2= game.gameName

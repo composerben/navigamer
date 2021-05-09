@@ -13,6 +13,10 @@ module.exports = {
         { gameshelfId: 1, gameId: 8, createdAt: new Date(), updatedAt: new Date() },
         { gameshelfId: 1, gameId: 9, createdAt: new Date(), updatedAt: new Date() },
         { gameshelfId: 1, gameId: 10, createdAt: new Date(), updatedAt: new Date() },
+        { gameshelfId: 2, gameId: 7, createdAt: new Date(), updatedAt: new Date() },
+        { gameshelfId: 2, gameId: 8, createdAt: new Date(), updatedAt: new Date() },
+        { gameshelfId: 2, gameId: 9, createdAt: new Date(), updatedAt: new Date() },
+        { gameshelfId: 2, gameId: 10, createdAt: new Date(), updatedAt: new Date() },
       ], {});
   },
 

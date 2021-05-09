@@ -1,16 +1,26 @@
+.navbar{
+  margin-top: 7px;
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
 .nav__container {
   width: 80%;
   margin: 0 auto;
 }
 
 .nav__logo {
+  display: flex;
   float: left;
-  margin-left: -150px;
+  margin-top: 7px;
+  margin-left: -125px;
   padding: 0px;
 }
 
 header {
   background: black;
+  height: 90px;
 }
 
 header::after {
@@ -21,7 +31,6 @@ header::after {
 
 nav {
   float: right;
-  
 }
 
 nav ul {
@@ -45,7 +54,8 @@ nav a {
 }
 
 nav a:hover {
-  color: #3A93C4;
+  color: #f8f8f8;
+  font-weight: bold;
 }
 
 nav a::before {

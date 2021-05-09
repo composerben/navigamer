@@ -71,11 +71,11 @@ router.post(
         async function savePlatforms(input) {
           input.forEach(async (element) => {
             const gameToPlatform = db.GameToPlatform.build({
-                  gameId,
-                  platformId: element
-                })
-                console.log(gameToPlatform);
-                await gameToPlatform.save();
+              gameId,
+              platformId: element
+            })
+            console.log(gameToPlatform);
+            await gameToPlatform.save();
           })
         }
         savePlatforms(platformId);

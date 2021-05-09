@@ -17,7 +17,7 @@ router.post("/", asyncHandler(async (req, res) => {
     name,
     userId
   });
-  
+
   await gameshelf.save();
   const gameshelfId = gameshelf.id
   // console.log('**************', id)
@@ -27,32 +27,34 @@ router.post("/", asyncHandler(async (req, res) => {
 router.get("/:id", requireAuth, asyncHandler(async (req, res) => {
   const gameshelfId = parseInt(req.params.id, 10);
   const sessionUser = req.session.auth;
-  
+  let userId;
+
   // const user = await db.User.findByPk(sessionUser.userId)
   let gameshelves = await db.Gameshelf.findAll({
     where: {
       userId: gameshelfId,
     },
     include: [db.Game, db.User],
-    order: ['id'] 
+    order: ['id']
   });
 
   let gameshelfOwner = false;
   if (gameshelfId === sessionUser.userId) {
     gameshelfOwner = true;
   }
-  const userId = gameshelves[0].User.id
-  
-  if (gameshelves.length < 1) {
+
+  if (gameshelves.length === 0) {
     gameshelves = false;
+  } else {
+    userId = gameshelves[0].User.id
   }
-  
+
   let gameshelfIdsArr = [];
-  for(let i = 0; i < gameshelves.length; i++) {
+  for (let i = 0; i < gameshelves.length; i++) {
     gameshelfIdsArr.push(gameshelves[i].id);
   }
   console.log(gameshelves);
-  
+
   if (!gameshelves) {
     res.render("gameshelves", { gameshelfOwner, sessionUser })
   } else {
@@ -64,7 +66,7 @@ router.get("/:id", requireAuth, asyncHandler(async (req, res) => {
 router.get("/:id/add-games-to-gameshelf", requireAuth, asyncHandler(async (req, res) => {
   const gameshelfId = parseInt(req.params.id, 10);
   const sessionUser = req.session.auth;
-  
+
   const games = await db.Game.findAll({ order: ["gameName"] });
 
   res.render('gameshelf-add-game', {

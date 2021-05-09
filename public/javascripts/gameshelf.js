@@ -3,6 +3,7 @@ const shelfName__input = document.querySelector('#newGameShelf__input')
 const shelfContainer = document.querySelector('.gameshelfCollection__container');
 let selectShelf = document.querySelectorAll('.gameshelf__div');
 const divUserId = document.querySelector('#gameshelf__container')
+const gamecardDisplayDiv = document.querySelector('#gameshelfGames__container')
 // const userId = addReviewButton.getAttribute("data-id");
 
 // SELECT A GAMESHELF
@@ -15,7 +16,10 @@ function addShelfListeners() {
 
       const getGames = await fetch(`/users/${userId}/gameshelves/${shelfId}`);
       const res = await getGames.json()
-      console.log(res);
+
+      if (res.gamesArr.length < 1) {
+        gamecardDisplayDiv.innerHTML = '';
+      }
     });
   });
 }

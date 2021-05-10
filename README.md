@@ -22,7 +22,7 @@ Navigamer is designed to help gamers keep track of which games they've already p
 Navigamer is a Goodreads clone, created with the goal of providing gamers with a place to keep track of games they've played, as well as browse for new games to play. 
 When first loading Navigamer, the home screen is a list of the 10 most recently reviewed games, so that visitors of Navigamer can see which games the community is currently talking about.
 
-![First Pic](assets/NvGmr1.jpg)
+!(assets/NvGmr1.jpg)
 
 In the nav bar, there's a signup link for new users, a login link for returning users, and a demo link to browse the site as a guest. The demo option is also available on both the login and signup pages.
 Upon logging in, a user is brought to their Gameshelf page. Here, a user can browse their own gameshelves, add a new gameshelf, click on any game currently added to their gameshelf, as well as click the "Add Game" button to add new games to any existing gameshelves.

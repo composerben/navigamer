@@ -6,11 +6,11 @@ Hey, listen! It's dangerous to keep track of all your gaming alone, take this! -
 Navigamer is designed to help gamers keep track of which games they've already played, which games they have yet to play, and read reviews from other passionate gamers to learn more before starting a new game. Supporting nearly every console ever made, navigating through your immense game-library can be made easy with a few simple clicks. Don't see your favorite game? No worries! We're constantly growing thanks to over a trillion users around the world, and after signing up you can add any game that we might be missing. 
 
 ## Index
-[API Documentation](https://github.com/composerben/navigamer/wiki/API-Documentation)
-[Database Schema](https://github.com/composerben/navigamer/wiki/Database-Schema)
-[Frontend Routes](https://github.com/composerben/navigamer/wiki/Frontend-Routes)
-[MVP Feature List](https://github.com/composerben/navigamer/wiki/MVP-Feature-List)
-[User Stories](https://github.com/composerben/navigamer/wiki/User-Stories)
+* [API Documentation](https://github.com/composerben/navigamer/wiki/API-Documentation)
+* [Database Schema](https://github.com/composerben/navigamer/wiki/Database-Schema)
+* [Frontend Routes](https://github.com/composerben/navigamer/wiki/Frontend-Routes)
+* [MVP Feature List](https://github.com/composerben/navigamer/wiki/MVP-Feature-List)
+* [User Stories](https://github.com/composerben/navigamer/wiki/User-Stories)
 
 ## Technologies Used
 * JavaScript

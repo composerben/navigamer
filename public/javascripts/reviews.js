@@ -2,6 +2,7 @@ const addReviewButton = document.querySelector(".review-button");
 const reviewText = document.querySelector(".review-text");
 const reviewRating = document.querySelector(".rating-score");
 const gameId = addReviewButton.getAttribute("data-id");
+const userId = addReviewButton.getAttribute("data-name")
 const reviewForm = document.querySelector(".review-form");
 const reviewsContainer = document.querySelector(".user-reviews");
 const reviewList = document.querySelector(".review-list");
@@ -11,17 +12,22 @@ const postReview = (data) => {
   // newReviewContainer.className = "review-container";
   reviewText.value = "";
   reviewRating.value = "0";
+
+  const newLink = document.createElement("a");
   const newLame = document.createElement("li");
   const newRating = document.createElement("li");
   const newReview = document.createElement("li");
-  // newReview.appendChild(document.createTextNode(review));
+
+  newLink.setAttribute('href', `/users/${userId}`)
   newLame.innerHTML = `${data.userLame}'s Review`;
   newLame.classList.add("new-review__username");
   newRating.innerHTML = data.rating + "/10";
   newRating.classList.add("new-review__rating");
   newReview.innerHTML = data.review;
   newReview.classList.add("new-review__review");
-  reviewList.appendChild(newLame);
+
+  reviewList.appendChild(newLink);
+  newLink.appendChild(newLame);
   reviewList.appendChild(newRating);
   reviewList.appendChild(newReview);
   // newReviewContainer.appendChild(newReview);

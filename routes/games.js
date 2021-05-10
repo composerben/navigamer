@@ -113,15 +113,18 @@ router.get(
     let userId;
     let user;
     let userLame = [];
+    let userList = []
 
     if (game.Reviews[0] !== undefined) {
       for (i = 0; i < game.Reviews.length; i++) {
         userId = game.Reviews[i].userId;
+        userList.push(userId);
         user = await db.User.findByPk(userId);
         userLame.push(user.username);
       }
     }
 
+    userId = sessionUser.userId;
     const gameId = req.params.id;
     const platforms = game.Platforms;
     const reviews = game.Reviews;
@@ -132,7 +135,9 @@ router.get(
       platforms,
       reviews,
       gameId,
+      userId,
       userLame,
+      userList,
       sessionUser,
     });
   })

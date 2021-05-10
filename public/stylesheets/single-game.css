@@ -2,7 +2,11 @@
   font-size: 22px;
   color: #ffffff;
   text-align: center;
-  margin: 35px 0 30px 0;
+  margin: 35px auto 30px auto;
+  background: rgba(0, 0, 0, .75);
+  width: fit-content;
+  padding: 0 50px;
+  border-radius: 60px;
 }
 
 #gameBody__container {
@@ -13,13 +17,14 @@
 }
 
 #game__container {
-  margin: 20px;
+  margin: auto;
+  margin-bottom: 20px;
   display: flex;
   width: 80vw;
   height: 700px;
   background-color: #2f3036;
   border: 1px solid #909090;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 20px;
   align-content: center;
 }

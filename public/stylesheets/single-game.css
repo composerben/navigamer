@@ -20,9 +20,9 @@
   margin: auto;
   margin-bottom: 20px;
   display: flex;
-  width: 80vw;
+  width: 60vw;
   height: 700px;
-  background-color: #2f3036;
+  background-color: rgba(1, 32, 73, 0.8);
   border: 1px solid #909090;
   border-radius: 10px;
   padding: 20px;
@@ -50,8 +50,10 @@
 
 #gameData {
   display: grid;
-  /* flex-direction: column; */
-  margin: 20px;
+  margin: 50px;
+  width: 2000px;
+  color: white;
+  justify-content: center;
 }
 
 #gameRelease,
@@ -68,7 +70,7 @@
   align-content: center;
   width: 70vw;
   height: 700px;
-  background-color: #0c0832;
+  background-color: rgba(1, 32, 73, 0.8);
   border: 1px solid #909090;
   border-radius: 5px;
   padding: 20px;
@@ -78,10 +80,15 @@
 .review-form {
   display: flex;
   flex-direction: column;
+  padding: 10px 50px;
+  width: 100%;
 }
 
 .review-text {
   border-radius: 20px;
+  padding: 10px;
+  margin: 10px auto 10px auto;
+  width: 100%;
 }
 
 .ratings__container {
@@ -111,10 +118,14 @@
 .review__add {
   display: flex;
   flex-direction: column;
+  text-align: center;
+  padding: 0 10%;
 }
 
 .reviews__h2 {
   text-decoration: underline;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .review-list {
@@ -124,12 +135,20 @@
 
 .new-review__username {
   font-size: 17px;
+  padding-left: 10px;
+  margin-top: 5px;
 }
 
 .new-review__rating,
 .new-review__review {
   list-style: none;
   margin: 5px 0 0 5px;
+  padding-left: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
 
 #footer__container {

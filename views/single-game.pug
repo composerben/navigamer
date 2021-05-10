@@ -51,11 +51,12 @@ block content
               option(value="8") 8
               option(value="9") 9 
               option(value="10") 10
-            button(class="review-button" type='submit' data-id=`${gameId}`) Post Review
+            button(class="review-button" type='submit' data-id=`${gameId}` data-name=`${userId}`) Post Review
           div(class="user-reviews")
             h2(class="reviews__h2") User Reviews
             ul(class="review-list")
               each review, i in reviews
-                li(class="new-review__username")= `${userLame[i]}'s Review` 
+                a(href=`/users/${userList[i]}`)
+                  li(class="new-review__username")= `${userLame[i]}'s Review` 
                 li(class="new-review__rating")= `${review.rating}/10`
                 li(class="new-review__review")= review.review

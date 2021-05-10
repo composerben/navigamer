@@ -81,6 +81,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-size: 1.7em;
+  font-weight: bold;
 }
 
 .gameshelf__div:hover {
@@ -105,8 +107,12 @@
   margin-left: auto;
   margin-right: auto;
   width: 70%;
-  overflow: hidden;
-  overflow-y: scroll;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+#gameshelfGames__container::-webkit-scrollbar {
+  display: none;
 }
 
 #gameshelfGames__container h1 {

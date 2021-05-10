@@ -24,7 +24,6 @@ function addShelfListeners() {
     shelf.addEventListener('click', async (event) => {
       const shelfId = event.target.getAttribute('data-id')
       const userId = divUserId.getAttribute('data-id');
-      console.log(event.target);
 
       const getGames = await fetch(`/users/${userId}/gameshelves/${shelfId}`);
       const res = await getGames.json()
@@ -79,10 +78,11 @@ const createShelf = async (inputValue) => {
   const div = document.createElement('div');
   // const title = document.createElement('h2');
   div.innerHTML = data.name;
-  div.classList.add('gameshelf__div')
-  div.setAttribute('data-id', data.gameshelfId)
-  shelfContainer.appendChild(div)
+  div.classList.add('gameshelf__div');
+  div.setAttribute('data-id', data.gameshelfId);
+  shelfContainer.appendChild(div);
   addShelfListeners();
+  shelfName__input.value = '';
 }
 
 addShelfListeners();
@@ -91,4 +91,4 @@ addShelfListeners();
 addShelfBtn.addEventListener('click', (event) => {
   event.preventDefault();
   const data = createShelf(shelfName__input.value)
-})
+});

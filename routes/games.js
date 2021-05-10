@@ -127,8 +127,10 @@ router.get(
         userLame.push(user.username);
       }
     }
-
-    userId = sessionUser.userId;
+    
+    if (sessionUser) {
+      userId = sessionUser.userId;
+    }
     const gameId = req.params.id;
     const platforms = game.Platforms;
     const reviews = game.Reviews;

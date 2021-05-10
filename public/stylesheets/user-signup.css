@@ -111,7 +111,7 @@
 }
 
 #footer__container {
-  position: relative;
+  position: fixed;
 }
 
 .demo-button {

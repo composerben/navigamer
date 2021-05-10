@@ -30,7 +30,7 @@ function addShelfListeners() {
       const res = await getGames.json()
 
       // if (res.gamesArr.length < 1) {
-        gamecardDisplayDiv.innerHTML = '';
+      gamecardDisplayDiv.innerHTML = '';
       // }
 
       res.gamesArr.forEach(game => {
@@ -92,11 +92,3 @@ addShelfBtn.addEventListener('click', (event) => {
   event.preventDefault();
   const data = createShelf(shelfName__input.value)
 })
-
-
-// PULL INITIAL DATABASE STATE
-const fillShelf = async (inputValue) => {
-  const res = await fetch('/users/')
-}
-
-fillShelf();

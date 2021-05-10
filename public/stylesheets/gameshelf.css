@@ -4,22 +4,22 @@
 }
 
 #gameshelves__text, #games__text {
-  display: flex;
-  margin: 20px;
-  border: 1px solid #909090;
-  border-radius: 5px;
-  background: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  color: #ffffff;
   text-align: center;
-  justify-content: center;
-  color: white;
+  /* margin: 35px auto 30px auto; */
+  background: rgba(0, 0, 0, .75);
+  width: fit-content;
+  padding: 0 50px;
+  border-radius: 60px;
 }
 
 #gameshelves__text {
-  width: 30%;
+  margin: 20px 0px 0px 6%;
 }
 
 #games__text {
-  width: 70%;
+  margin: 20px auto auto 30.5%; 
 }
 
 #gameshelf__container {
@@ -27,6 +27,20 @@
   margin: 20px;
   width: 90%;
   height: 700px;
+}
+
+#newGameShelf__input {
+  border-radius: 10px;
+  padding: 5px;
+  width: 90%;
+  margin: auto auto 10px auto;
+}
+
+#addGameshelf__btn {
+  width: 40%;
+  font-size: 16px;
+  align-content: center;
+  margin: 5px auto 5px auto;
 }
 
 #gameshelfLibrary__container {
@@ -37,14 +51,17 @@
   margin: 20px;
   width: 30%;
   text-align: center;
-  border: 1px solid #909090;
   border-radius: 5px;
   background: rgba(0, 0, 0, 0.5);
 }
 
 #gameshelfLibrary__container h1 {
-  margin: 10px;
+  margin: -8px 0px 0px 0px;
   font-size: 2rem;
+}
+
+#add__game {
+  margin-bottom: 10px;
 }
 
 #addGameshelf__container {
@@ -63,6 +80,7 @@
   height: 40px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .gameshelf__div:hover {

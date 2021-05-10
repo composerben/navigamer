@@ -87,7 +87,7 @@ router.post("/:id/add-games-to-gameshelf", requireAuth, asyncHandler(async (req,
   const userId = req.session.auth.userId;
   console.log('**************', req.body.games);
   console.log('**************', req.body.gameshelves);
-  
+
 
   if (games.length > 1) {
     async function savePlatforms(input) {

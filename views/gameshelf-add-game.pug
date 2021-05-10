@@ -1,16 +1,23 @@
 extends layout.pug
 
 append head 
-  link(rel="stylesheet", href="/stylesheets/games.css")
+  link(rel="stylesheet", href="/stylesheets/add-game-to-gameshelf.css")
+  script(src="/javascripts/game-to-gameshelf.js" type="module" defer)
 
 block content
-  div#games__title
-    h1 Games Currently In Our System
-  div#games__container 
-    each game in games
-      div.body__outsideGameCard
-        div.body__gameCard 
-          div.gameCard__image 
-            img(src=game.imgUrl)
-          div.gameCard__text
-            h2= game.gameName
+  form(action=`/users/${user.id}/add-games-to-gameshelf` method='post' class='game-to-gameshelf-form')
+    div#submitBtn
+      select(class="gameshelfSelect__button" name="gameshelves" required) 
+        each shelf in gameshelves
+          option(value=`${shelf.id}` class='shelfName' name='shelfName')= `${shelf.name}`
+      button(type="submit" class="submit__button") Submit Games
+    div#games__container 
+      each game, i in games
+        div.body__outsideGameCard
+          div.body__gameCard 
+            div(data-id=`${game.id}`).gameCard__image 
+              img(src=game.imgUrl)
+            div.gameCard__text
+              h2= game.gameName
+            div.select__checkbox 
+              input(type="checkbox", class="gameName" name=`games` value=game.id)

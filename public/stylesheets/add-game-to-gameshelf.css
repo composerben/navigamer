@@ -1,7 +1,8 @@
-/* #games__title {
+#games__title {
   font-size: 22px;
   color: #e6e3e3;
   text-align: center;
+  /* margin: 35px 0 30px 0; */
   margin-top: 35px;
   margin-bottom: 30px;
   background: rgba(0, 0, 0, 0.75);
@@ -9,6 +10,46 @@
   margin-left: auto;
   margin-right: auto;
   width: 900px;
+}
+
+#submitBtn {
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 63px;
+  z-index: 10;
+}
+
+.submit__button {
+  position: sticky;
+  display: inline-flex;
+  justify-content: center;
+  width: 20%;
+  margin: 10px;
+  top: 0;
+  background: rgb(255, 255, 255);
+  border: 0;
+  padding: 10px 30px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 1em;
+  text-transform: uppercase;
+}
+
+.gameshelfSelect__button {
+  position: sticky;
+  display: inline-flex;
+  justify-content: center;
+  width: 20%;
+  margin: 10px;
+  top: 0;
+  background: rgb(255, 255, 255);
+  border: 0;
+  padding: 10px 30px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 1em;
+  text-transform: uppercase;
 }
 
 #games__title p {
@@ -60,7 +101,7 @@
   border: 1px solid #909090;
   border-radius: 5px;
   padding: 20px;
-  box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.447);
+  box-shadow: 0 0 5px 5px #e6e3e340;
 }
 
 .gameCard__text {
@@ -70,10 +111,10 @@
   text-align: center;
   font-size: 12px;
   justify-content: center;
+  opacity: 0.5;
 }
 
-.gameCard__text h2,
-a {
+.gameCard__text h2, a {
   text-decoration: none;
 }
 
@@ -91,6 +132,12 @@ a {
   align-content: center;
 }
 
+.select__checkbox {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
 #footer__container {
   position: relative;
-} */
+}

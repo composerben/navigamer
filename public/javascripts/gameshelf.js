@@ -77,9 +77,8 @@ const createShelf = async (inputValue) => {
 
 
   const div = document.createElement('div');
-  const title = document.createElement('h2');
-  title.innerText = data.name;
-  div.appendChild(title);
+  // const title = document.createElement('h2');
+  div.innerHTML = data.name;
   div.classList.add('gameshelf__div')
   div.setAttribute('data-id', data.gameshelfId)
   shelfContainer.appendChild(div)

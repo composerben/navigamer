@@ -58,7 +58,8 @@
 
 #gameRelease,
 #gameDeveloper,
-#gamePlatforms {
+#gamePlatforms,
+#gameBio {
   display: inline-block;
   margin: 20px;
 }

@@ -20,7 +20,7 @@ router.post("/", asyncHandler(async (req, res) => {
 
   await gameshelf.save();
   const gameshelfId = gameshelf.id
-  // console.log('**************', id)
+  // ('**************', id)
   res.json({ name, userId, gameshelfId })
 }));
 
@@ -53,7 +53,6 @@ router.get("/:id", requireAuth, asyncHandler(async (req, res) => {
   for (let i = 0; i < gameshelves.length; i++) {
     gameshelfIdsArr.push(gameshelves[i].id);
   }
-  console.log(gameshelves);
 
   if (!gameshelves) {
     res.render("gameshelves", { gameshelfOwner, sessionUser })
@@ -73,7 +72,6 @@ router.get("/:id/add-games-to-gameshelf", requireAuth, asyncHandler(async (req, 
       userId: sessionUser.userId
     }
   })
-  // console.log(gameshelves[0]);
 
   res.render('gameshelf-add-game', {
     games,
@@ -85,9 +83,6 @@ router.get("/:id/add-games-to-gameshelf", requireAuth, asyncHandler(async (req, 
 router.post("/:id/add-games-to-gameshelf", requireAuth, asyncHandler(async (req, res) => {
   const { games, gameshelves } = req.body;
   const userId = req.session.auth.userId;
-  console.log('**************', req.body.games);
-  console.log('**************', req.body.gameshelves);
-
 
   if (games.length > 1) {
     async function savePlatforms(input) {
@@ -96,7 +91,7 @@ router.post("/:id/add-games-to-gameshelf", requireAuth, asyncHandler(async (req,
           gameId: element,
           gameshelfId: gameshelves
         })
-        console.log(gameToGameshelf);
+
         await gameToGameshelf.save();
       })
     }
@@ -128,7 +123,6 @@ router.get("/:userId/gameshelves/:gameshelfId", requireAuth, asyncHandler(async 
   for (let i = 0; i < gameshelves[0].Games.length; i++) {
     gamesArr.push(gameshelves[0].Games[i])
   }
-  console.log(gamesArr)
 
   res.json({ gameshelves, gamesArr })
 }));

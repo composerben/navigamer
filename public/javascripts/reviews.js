@@ -35,7 +35,6 @@ const postReview = (data) => {
 };
 
 const submitReview = async (event) => {
-  //   console.log(gameId);
   event.preventDefault();
 
   const formData = new FormData(reviewForm);

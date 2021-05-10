@@ -37,7 +37,7 @@ router.get(
     const platforms = await db.Platform.findAll();
     const primaryPlatforms = platforms.splice(0, 6);
 
-    console.log(sessionUser);
+    (sessionUser);
     if (sessionUser) {  
       res.render("add-game", {
       title: "Add Game",
@@ -79,7 +79,7 @@ router.post(
               gameId,
               platformId: element
             })
-            console.log(gameToPlatform);
+
             await gameToPlatform.save();
           })
         }
@@ -91,7 +91,6 @@ router.post(
         })
         await gameToPlatform.save();
       }
-      // console.log(gameToPlatform);
       res.redirect("/games");
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
@@ -157,8 +156,6 @@ router.post(
     const user = await db.User.findByPk(userId);
     const userLame = user.username;
 
-    // console.log("***********", user);
-
     const gameReview = db.Review.build({
       gameId,
       userId,
@@ -167,7 +164,6 @@ router.post(
     });
 
     const validatorErrors = validationResult(req);
-    console.log(validatorErrors);
 
     if (validatorErrors.isEmpty()) {
       await gameReview.save();
@@ -175,7 +171,6 @@ router.post(
       res.json({ review, rating, userLame });
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
-      // console.log("**************", errors);
       res.render("single-game", {
         title: "Game Page",
         gameReview,

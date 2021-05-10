@@ -107,7 +107,6 @@ router.get('/logout', (req, res) => {
 ////////// Demo Account
 
 router.get("/demo-login", asyncHandler(async (req, res) => {
-  // console.log(req.body);
   const username = "demoUser";
   const password = "password";
 

@@ -6,6 +6,7 @@
   max-width: 100vw;
   align-content: center;
   text-align: center;
+  margin-bottom: 100px;
 }
 
 #addGameBody__container h1 {
@@ -31,7 +32,8 @@
   font-size: 20px;
   display: flex;
   flex-direction: column;
-  margin: 20px;
+  justify-content: center;
+  margin: 10px;
   width: 90%;
 }
 
@@ -46,12 +48,56 @@
   border-radius: 10px;
   height: 30px;
   transition: background-color 0.2s;
+  margin-left: 40px;
 }
+
 
 #addGame__btn:hover {
   background-color: rgb(53, 222, 73);
 }
 
 #footer__container {
-  position: fixed;
+  position: relative;
+}
+
+.olderConsoles--hidden {
+  display: none;
+}
+
+.olderConsoles--shown {
+  display: unset;
+}
+
+.platform__checkbox--hidden {
+  font-size: 20px;
+  margin: 10px;
+}
+
+.platform__checkbox--hidden input {
+  margin: 0 10px;
+}
+
+.platformDisplay {
+  font-size: 2em;
+  margin: 20px;
+}
+
+.platformsContainer {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.platformsContainer input {
+  margin: 0 10px;
+}
+
+.primaryPlatform__checkbox {
+  font-size: 1.5em;
+}
+
+.availablePlatforms {
+  font-size: 2em;
+  font-weight: bold;
 }

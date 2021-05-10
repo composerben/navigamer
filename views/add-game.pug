@@ -2,6 +2,7 @@ extends layout.pug
 
 append head 
     link(rel="stylesheet" type="text/css" href="/stylesheets/add-game.css")
+    script(src="/javascripts/add-game.js" type="module" defer)
 
 block content
     if errors
@@ -28,16 +29,18 @@ block content
                     div.addGame__inputBlock
                         label(for="imgUrl") Image URL
                         input(type="imgUrl" name="imgUrl" id="imgUrl")
-                    div.addGame__inputBlock
-                        label Available Platforms
+                    div.platformsContainer
+                        label(class="availablePlatforms") Available Platforms
                         each platform in primaryPlatforms
                             div.primaryPlatform__checkbox
                                 label= platform.name
-                                input(type="checkbox" value=platform.id)
+                                input(type="checkbox" class="checkbox" value=platform.id)
+                    h2.platformDisplay Please click here to display older platforms
+                    div.olderConsoles--hidden
                         each platform in platforms
                             div.platform__checkbox--hidden
                                 label(for="platformId")= platform.name
-                                input(type="checkbox" name="platformId" value=platform.id)
+                                input(type="checkbox" class="checkbox" name="platformId" value=platform.id)
                             
                         //- input(type="checkbox" name=platform[1].name value=platform[1].id)= platform[1].name
                     div.addGame__inputBlock

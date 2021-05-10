@@ -22,3 +22,26 @@ body {
 a {
   color: #00B7FF;
 }
+
+.githubLogo {
+  height: 70px;
+}
+
+#footer__containerText {
+  display: inline-flex;
+  margin: 5px 20px;
+}
+
+.member {
+  margin: 0 20px;
+}
+
+.member a {
+  margin: 0 20px;
+  color: #e6e3e3;
+}
+
+#footer__content {
+  display: flex;
+  justify-content: center;
+}

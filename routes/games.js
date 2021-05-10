@@ -66,6 +66,7 @@ router.post(
       developer,
       imgUrl,
     });
+    console.log(platformId)
 
     const validatorErrors = validationResult(req);
 

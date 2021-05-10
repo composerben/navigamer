@@ -37,10 +37,19 @@
 }
 
 #addGameshelf__btn {
-  width: 40%;
-  font-size: 16px;
-  align-content: center;
-  margin: 5px auto 5px auto;
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  top: 0;
+  background: rgb(255, 255, 255);
+  border: 0;
+  padding: 10px 30px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 1em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  margin-left: 25px;
 }
 
 #gameshelfLibrary__container {

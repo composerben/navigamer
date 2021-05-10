@@ -37,15 +37,20 @@ router.get(
     const platforms = await db.Platform.findAll();
     const primaryPlatforms = platforms.splice(0, 6);
 
-    res.render("add-game", {
+    console.log(sessionUser);
+    if (sessionUser) {  
+      res.render("add-game", {
       title: "Add Game",
       game,
       csrfToken: req.csrfToken(),
       sessionUser,
       platforms,
       primaryPlatforms
-    });
-  })
+      });
+    } else {
+      res.redirect('/login')
+    }
+})
 );
 
 router.post(

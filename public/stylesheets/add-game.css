@@ -53,5 +53,5 @@
 }
 
 #footer__container {
-  position: relative;
+  position: fixed;
 }

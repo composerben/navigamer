@@ -12,6 +12,46 @@
   width: 900px;
 }
 
+#submitBtn {
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 63px;
+  z-index: 10;
+}
+
+.submit__button {
+  position: sticky;
+  display: inline-flex;
+  justify-content: center;
+  width: 20%;
+  margin: 10px;
+  top: 0;
+  background: rgb(255, 255, 255);
+  border: 0;
+  padding: 10px 30px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 1em;
+  text-transform: uppercase;
+}
+
+.gameshelfSelect__button {
+  position: sticky;
+  display: inline-flex;
+  justify-content: center;
+  width: 20%;
+  margin: 10px;
+  top: 0;
+  background: rgb(255, 255, 255);
+  border: 0;
+  padding: 10px 30px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 1em;
+  text-transform: uppercase;
+}
+
 #games__title p {
   font-size: 20px;
 }
@@ -83,15 +123,6 @@
   align-self: center;
   width: 230px;
   height: 280px;
-  opacity: 0.1;
-}
-
-.gameCard__image--selected {
-  display: flex;
-  align-self: center;
-  width: 230px;
-  height: 280px;
-  opacity: 1;
 }
 
 .gameCard__image img {
@@ -99,6 +130,12 @@
   width: 100%;
   justify-content: center;
   align-content: center;
+}
+
+.select__checkbox {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 #footer__container {

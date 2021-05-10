@@ -68,11 +68,47 @@ router.get("/:id/add-games-to-gameshelf", requireAuth, asyncHandler(async (req, 
   const sessionUser = req.session.auth;
 
   const games = await db.Game.findAll({ order: ["gameName"] });
+  const gameshelves = await db.Gameshelf.findAll({
+    where: {
+      userId: sessionUser.userId
+    }
+  })
+  // console.log(gameshelves[0]);
 
   res.render('gameshelf-add-game', {
     games,
     sessionUser,
+    gameshelves
   });
+}));
+
+router.post("/:id/add-games-to-gameshelf", requireAuth, asyncHandler(async (req, res) => {
+  const { games, gameshelves } = req.body;
+  const userId = req.session.auth.userId;
+  console.log('**************', req.body.games);
+  console.log('**************', req.body.gameshelves);
+  
+
+  if (games.length > 1) {
+    async function savePlatforms(input) {
+      input.forEach(async (element) => {
+        const gameToGameshelf = db.GameToGameshelf.build({
+          gameId: element,
+          gameshelfId: gameshelves
+        })
+        console.log(gameToGameshelf);
+        await gameToGameshelf.save();
+      })
+    }
+    savePlatforms(games);
+  } else {
+    const gameToGameshelf = db.GameToGameshelf.build({
+      gameId: games,
+      gameshelfId: gameshelves
+    })
+    await gameToGameshelf.save();
+  }
+  res.redirect(`/users/${userId}`);
 }));
 
 router.get("/:userId/gameshelves/:gameshelfId", requireAuth, asyncHandler(async (req, res) => {

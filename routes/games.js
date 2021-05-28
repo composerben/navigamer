@@ -38,19 +38,19 @@ router.get(
     const primaryPlatforms = platforms.splice(0, 6);
 
     (sessionUser);
-    if (sessionUser) {  
+    if (sessionUser) {
       res.render("add-game", {
-      title: "Add Game",
-      game,
-      csrfToken: req.csrfToken(),
-      sessionUser,
-      platforms,
-      primaryPlatforms
+        title: "Add Game",
+        game,
+        csrfToken: req.csrfToken(),
+        sessionUser,
+        platforms,
+        primaryPlatforms
       });
     } else {
       res.redirect('/login')
     }
-})
+  })
 );
 
 router.post(
@@ -118,7 +118,7 @@ router.get(
     let userId;
     let user;
     let userLame = [];
-    let userList = []
+    let userList = [];
 
     if (game.Reviews[0] !== undefined) {
       for (i = 0; i < game.Reviews.length; i++) {
@@ -128,7 +128,7 @@ router.get(
         userLame.push(user.username);
       }
     }
-    
+
     if (sessionUser) {
       userId = sessionUser.userId;
     }

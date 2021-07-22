@@ -3,12 +3,13 @@
   width: 100vw;
 }
 
-#gameshelves__text, #games__text {
+#gameshelves__text,
+#games__text {
   font-size: 18px;
   color: #ffffff;
   text-align: center;
   /* margin: 35px auto 30px auto; */
-  background: rgba(0, 0, 0, .75);
+  background: rgba(0, 0, 0, 0.75);
   width: fit-content;
   padding: 0 50px;
   border-radius: 60px;
@@ -19,7 +20,7 @@
 }
 
 #games__text {
-  margin: 20px auto auto 30.5%; 
+  margin: 20px auto auto 30.5%;
 }
 
 #gameshelf__container {
@@ -156,7 +157,8 @@
   justify-content: center;
 }
 
-.gameCard__text h2, a {
+.gameCard__text h2,
+a {
   text-decoration: none;
 }
 
@@ -176,4 +178,9 @@
 
 #footer__container {
   position: relative;
+}
+
+.noGames {
+  color: White;
+  margin-top: 2%;
 }

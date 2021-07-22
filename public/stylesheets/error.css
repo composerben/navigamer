@@ -1,0 +1,14 @@
+.errorMsg {
+  color: white;
+  background-color: #000000ad;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.errorDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 20vh;
+  align-items: center;
+}

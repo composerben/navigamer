@@ -106,6 +106,7 @@ router.post(
   })
 );
 
+// Get REVIEWS on single-game page
 router.get(
   "/:id(\\d+)",
   asyncHandler(async (req, res) => {
@@ -135,6 +136,14 @@ router.get(
     const gameId = req.params.id;
     const platforms = game.Platforms;
     const reviews = game.Reviews;
+    let reviewByUser;
+    
+    reviews.forEach(review => {
+      if (userId === review.userId) {
+        reviewByUser = review
+      }
+    })
+    // console.log(reviewByUser);
 
     res.render("single-game", {
       title: "All Games",
@@ -146,6 +155,7 @@ router.get(
       userLame,
       userList,
       sessionUser,
+      reviewByUser
     });
   })
 );
@@ -158,6 +168,7 @@ router.post(
     const { userId } = req.session.auth;
     const user = await db.User.findByPk(userId);
     const userLame = user.username;
+    console.log(gameId, userId, rating, review);
 
     const gameReview = db.Review.build({
       gameId,
@@ -182,5 +193,10 @@ router.post(
     }
   })
 );
+
+router.delete("/:id(\\d+)", asyncHandler( async (req, res) => {
+  const review = await db.Review.findByPk(req.body.reviewId);
+  await review.destroy();
+}));
 
 module.exports = router;

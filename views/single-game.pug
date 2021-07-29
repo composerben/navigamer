@@ -28,7 +28,7 @@ block content
     div(class="reviews__container")
       if !user
         h1 Please log in to leave a review 
-        a(href="/login") Click here to login 
+        a(href="/login") Click here to login
       else
         if errors
           div(class="review-error")
@@ -38,23 +38,35 @@ block content
                 li(class="error-li")= error
         form(action='/games/:id' method='post' class='review-form')
           div(class="review__add") 
-            h1(for='review-text') Write a review! 
-            textarea(class="review-text" name="review-text", cols="30", rows="10")
+            if reviewByUser 
+              h1(for='review-text') Edit your review! 
+              textarea(class="review-text" name="review-text", cols="30", rows="10")= reviewByUser.review
+            else 
+              h1(for='review-text') Write a review! 
+              textarea(class="review-text" name="review-text", cols="30", rows="10")
           div(class="ratings__container")
-            label(for='rating-score') Your rating: 
-            select(class="rating-score" name="rating-score" required)
-              option(value="0" disabled selected) --Please select a rating-- 
-              option(value="1") 1
-              option(value="2") 2
-              option(value="3") 3
-              option(value="4") 4 
-              option(value="5") 5
-              option(value="6") 6
-              option(value="7") 7
-              option(value="8") 8
-              option(value="9") 9 
-              option(value="10") 10
-            button(class="review-button" type='submit' data-id=`${gameId}` data-name=`${userId}`) Post Review
+            if reviewByUser
+              label(for='rating-score') Your rating:
+							ul 
+								each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+									li= i
+							button(class="review-button" type='submit' data-id=`${gameId}` data-name=`${userId}`) Edit Review
+							button(class="delete-button" type='submit' data-id=`${gameId}` data-name=`${userId}` data-reviewId=`${reviewByUser.id}`) Delete Review 
+            else 
+              label(for='rating-score') Your rating: 
+                select(class="rating-score" name="rating-score" required)
+                  option(value="0" disabled selected)
+                  option(value="1") 1
+                  option(value="2") 2
+                  option(value="3") 3
+                  option(value="4") 4 
+                  option(value="5") 5
+                  option(value="6") 6
+                  option(value="7") 7
+                  option(value="8") 8
+                  option(value="9") 9 
+                  option(value="10") 10
+                button(class="review-button" type='submit' data-id=`${gameId}` data-name=`${userId}`) Post Review
           div(class="user-reviews")
             h2(class="reviews__h2") User Reviews
             ul(class="review-list")
@@ -62,5 +74,5 @@ block content
                 div.review_wrapper
                   a(href=`/users/${userList[i]}`)
                     li(class="new-review__username")= `${userLame[i]}'s Review` 
-                  li(class="new-review__rating")= `${review.rating}/10`
-                  li(class="new-review__review")= review.review
+                    li(class="new-review__rating")= `${review.rating}/10`
+                    li(class="new-review__review")= review.review

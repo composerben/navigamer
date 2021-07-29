@@ -46,12 +46,13 @@ block content
               textarea(class="review-text" name="review-text", cols="30", rows="10")
           div(class="ratings__container")
             if reviewByUser
-              label(for='rating-score') Your rating:
-							ul 
-								each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-									li= i
-							button(class="review-button" type='submit' data-id=`${gameId}` data-name=`${userId}`) Edit Review
-							button(class="delete-button" type='submit' data-id=`${gameId}` data-name=`${userId}` data-reviewId=`${reviewByUser.id}`) Delete Review 
+              label(for='rating-score') Your rating: 
+                select(class="rating-score" name="rating-score" placeholder=reviewByUser.rating required)
+                  option(value="0" disabled selected) --Please select a rating-- 
+                  each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                    option(value=`${i}`)= i
+                button(class="review-button" type='submit' data-id=`${gameId}` data-name=`${userId}`) Edit Review
+                button(class="delete-button" type='submit' data-id=`${gameId}` data-name=`${userId}` data-reviewId=`${reviewByUser.id}`) Delete Review 
             else 
               label(for='rating-score') Your rating: 
                 select(class="rating-score" name="rating-score" required)

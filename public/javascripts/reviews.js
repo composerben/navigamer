@@ -84,12 +84,13 @@ deleteReviewBtn.addEventListener('click', async (e) => {
   e.preventDefault();
 
   const reviewId = document.getAttribute('data-reviewId');
+  console.log(reviewId)
 
-  const req = await fetch(`/games/${gameId}`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ reviewId }),
-  });
+  // const req = await fetch(`/games/${gameId}`, {
+  //   method: "DELETE",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify({ reviewId }),
+  // });
 })

@@ -6,6 +6,7 @@ const userId = addReviewButton.getAttribute("data-name");
 const reviewForm = document.querySelector(".review-form");
 const reviewsContainer = document.querySelector(".user-reviews");
 const reviewList = document.querySelector(".review-list");
+const reviewWrap = document.querySelector('.review_wrapper');
 
 const postReview = (data) => {
   // const newReviewContainer = document.createElement("div");
@@ -65,3 +66,14 @@ const submitReview = async (event) => {
 };
 
 addReviewButton.addEventListener("click", submitReview);
+
+// Edit button and fetch
+reviewWrap.addEventListener('click', () => {
+  const editButton = document.createElement('button');
+  editButton.innerHTML = 'Edit';
+  editButton.addEventListener('click', (e) => {
+    e.preventDefault();
+  })
+
+  reviewWrap.appendChild(editButton);
+})

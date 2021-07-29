@@ -59,7 +59,8 @@ block content
             h2(class="reviews__h2") User Reviews
             ul(class="review-list")
               each review, i in reviews
-                a(href=`/users/${userList[i]}`)
-                  li(class="new-review__username")= `${userLame[i]}'s Review` 
-                li(class="new-review__rating")= `${review.rating}/10`
-                li(class="new-review__review")= review.review
+                div.review_wrapper
+                  a(href=`/users/${userList[i]}`)
+                    li(class="new-review__username")= `${userLame[i]}'s Review` 
+                  li(class="new-review__rating")= `${review.rating}/10`
+                  li(class="new-review__review")= review.review

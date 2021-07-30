@@ -66,7 +66,6 @@ router.post(
       developer,
       imgUrl,
     });
-    console.log(platformId)
 
     const validatorErrors = validationResult(req);
 
@@ -143,7 +142,6 @@ router.get(
         reviewByUser = review
       }
     })
-    // console.log(reviewByUser);
 
     res.render("single-game", {
       title: "All Games",
@@ -181,7 +179,6 @@ router.post(
 
     if (validatorErrors.isEmpty()) {
       await gameReview.save();
-      // res.redirect(`/games/${gameId}`);
       res.json({ review, rating, userLame });
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
@@ -194,9 +191,17 @@ router.post(
   })
 );
 
+// EDIT ROUTE
+router.put("/:id(\\d+)", asyncHandler( async (req, res) => {
+  console.log(req.body);
+}));
+
+// DELETE ROUTE
 router.delete("/:id(\\d+)", asyncHandler( async (req, res) => {
   const review = await db.Review.findByPk(req.body.reviewId);
   await review.destroy();
+
+  return review;
 }));
 
 module.exports = router;

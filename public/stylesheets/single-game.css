@@ -67,7 +67,7 @@
 .reviews__container {
   margin: auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-content: center;
   width: 70vw;
   height: 700px;
@@ -137,19 +137,40 @@
 .new-review__username {
   font-size: 17px;
   padding-left: 10px;
-  margin-top: 5px;
+  margin: 5px 0 5px 20px;
+  width: fit-content;
 }
 
 .new-review__rating,
 .new-review__review {
   list-style: none;
-  margin: 5px 0 0 5px;
-  padding-left: 20px;
+  padding-left: 30px;
+  margin-bottom: 5px;
+}
+
+.new-review__review {
+  margin-bottom: 20px;
 }
 
 a {
   text-decoration: none;
   color: white;
+}
+
+.user-reviews {
+  display: flex;
+  flex-direction: column;
+}
+
+.thanksDiv {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.review_wrapper a {
+  display: flex;
+  width: fit-content;
 }
 
 #footer__container {

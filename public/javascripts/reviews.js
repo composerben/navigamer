@@ -1,16 +1,21 @@
 const addReviewButton = document.querySelector(".review-button");
+const editButton = document.querySelector('.edit-button');
+const deleteReviewBtn = document.querySelector(".delete-button");
 const reviewText = document.querySelector(".review-text");
 const reviewRating = document.querySelector(".rating-score");
 const gameId = addReviewButton.getAttribute("data-id");
 const userId = addReviewButton.getAttribute("data-name");
 const reviewForm = document.querySelector(".review-form");
-const reviewsContainer = document.querySelector(".user-reviews");
 const reviewList = document.querySelector(".review-list");
-const reviewWrap = document.querySelector('.review_wrapper');
+const reviewWrap = document.querySelector(".review_wrapper");
+
+// Div selectors
+const reviewsContainer = document.querySelector(".reviews__container");
+const addReviewContainer = document.querySelector(".review__add");
+const ratingContainer = document.querySelector(".ratings__container");
+const userReviewsContainer = document.querySelector(".user-reviews");
 
 const postReview = (data) => {
-  // const newReviewContainer = document.createElement("div");
-  // newReviewContainer.className = "review-container";
   reviewText.value = "";
   reviewRating.value = "0";
 
@@ -19,7 +24,7 @@ const postReview = (data) => {
   const newRating = document.createElement("li");
   const newReview = document.createElement("li");
 
-  newLink.setAttribute('href', `/users/${userId}`)
+  newLink.setAttribute("href", `/users/${userId}`);
   newLame.innerHTML = `${data.userLame}'s Review`;
   newLame.classList.add("new-review__username");
   newRating.innerHTML = data.rating + "/10";
@@ -52,10 +57,14 @@ const submitReview = async (event) => {
     if (!res.ok) {
       throw res;
     }
+
     const data = await res.json();
     postReview(data);
+
   } catch (e) {
+    console.log(e)
     const errorJSON = await e.json();
+    console.log(errorJSON)
     if (errorJSON) {
       document.querySelector(".review-error").innerHTML = `${errorJSON.msg}`;
     } else {
@@ -63,34 +72,62 @@ const submitReview = async (event) => {
       alert("Please completely fill out your review before clicking submit :)");
     }
   }
+  addReviewContainer.remove();
+  ratingContainer.remove();
+
+  const thanksDiv = document.createElement('div');
+  thanksDiv.classList.add('thanksDiv')
+  const thanksElement = document.createElement('h1');
+  thanksElement.innerHTML = 'Thank you for your review!';
+  thanksElement.classList.add('review__add');
+  thanksDiv.appendChild(thanksElement);
+  reviewsContainer.insertBefore(thanksDiv, userReviewsContainer);
 };
 
 addReviewButton.addEventListener("click", submitReview);
 
-// Edit button and fetch
-reviewWrap.addEventListener('click', () => {
-  const editButton = document.createElement('button');
-  editButton.innerHTML = 'Edit';
-  editButton.addEventListener('click', (e) => {
-    e.preventDefault();
-  })
-
-  reviewWrap.appendChild(editButton);
-})
-
-
 // Delete Review
-deleteReviewBtn.addEventListener('click', async (e) => {
-  e.preventDefault();
+if (deleteReviewBtn) {
+  deleteReviewBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
 
-  const reviewId = document.getAttribute('data-reviewId');
-  console.log(reviewId)
+    const reviewId = deleteReviewBtn.getAttribute("data-reviewId");
+    const reviewSelector = document.getElementById(`${reviewId}`);
 
-  // const req = await fetch(`/games/${gameId}`, {
-  //   method: "DELETE",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify({ reviewId }),
-  // });
-})
+    addReviewContainer.remove();
+    ratingContainer.remove();
+    reviewSelector.remove();
+  
+    const thanksDiv = document.createElement('div');
+    thanksDiv.classList.add('thanksDiv')
+    const thanksElement = document.createElement('h1');
+    thanksElement.innerHTML = 'Comment Deleted';
+    thanksElement.classList.add('review__add');
+    thanksDiv.appendChild(thanksElement);
+    reviewsContainer.insertBefore(thanksDiv, userReviewsContainer);
+
+    const deleteFetch = await fetch(`/games/${gameId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ reviewId }),
+    });
+
+  });
+}
+
+// Edit Review
+if (editButton) {
+  editButton.addEventListener(async (e) => {
+    e.preventDefault();
+    console.log(gameId);
+
+    const editFetch = await fetch(`/games/${gameId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ gameId, rating, review }),
+  })
+}

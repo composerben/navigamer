@@ -23,7 +23,7 @@ block content
           each platform in platforms
             h3= platform.name
         div#gameBio
-          h2 Bio  
+          h2 Bio
           h3 Maecenas porta pharetra dui a elementum. Nunc placerat luctus turpis, at sodales nisl sodales nec. Mauris malesuada lacinia quam. Vestibulum ultrices feugiat sapien, eu egestas elit. Etiam at tortor quis eros ullamcorper luctus. Pellentesque sed nisl tincidunt, pellentesque nisl id, gravida erat. Donec ut molestie sem. In vestibulum ipsum eu risus vulputate ullamcorper at sed elit.
     div(class="reviews__container")
       if !user
@@ -36,38 +36,40 @@ block content
               p Oops! Something went wrong:
               each error in errors
                 li(class="error-li")= error
-        form(action='/games/:id' method='post' class='review-form')
-          div(class="review__add") 
-            if reviewByUser 
-              h1(for='review-text') Edit your review! 
+        div(class="review__add")
+          if reviewByUser
+            form(action='/games/:id' method='PUT' class='review-form')
+              h1(for='review-text') Edit your review!
               textarea(class="review-text" name="review-text", cols="30", rows="10")= reviewByUser.review
-            else 
-              h1(for='review-text') Write a review! 
-              textarea(class="review-text" name="review-text", cols="30", rows="10")
-          div(class="ratings__container")
-            if reviewByUser
-              label(for='rating-score') Your rating: 
-                select(class="rating-score" name="rating-score" placeholder=reviewByUser.rating required)
-                  each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                    if reviewByUser.rating === i
-                      option(value=`${i}` selected)= reviewByUser.rating
-                    else
-                      option(value=`${i}`)= i
-                button(class="review-button" type='submit' data-id=`${gameId}` data-name=`${userId}`) Edit Review
+              div(class="ratings__container")
+                label(for='rating-score') Your rating:
+                  select(class="rating-score" name="rating-score" placeholder=reviewByUser.rating required)
+                    each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                      if reviewByUser.rating === i
+                        option(value=`${i}` selected)= reviewByUser.rating
+                button(class="edit-button" data-id=`${gameId}` data-name=`${userId}`) Edit Review
                 button(class="delete-button" type='submit' data-id=`${gameId}` data-name=`${userId}` data-reviewId=`${reviewByUser.id}`) Delete Review 
-            else 
-              label(for='rating-score') Your rating: 
-                select(class="rating-score" name="rating-score" required)
-                  option(value="0" disabled selected) --Please select a rating--
+          else
+            form(action='/games/:id' method='POST' class='review-form')
+              h1(for='review-text') Write a review!
+              textarea(class="review-text" name="review-text", cols="30", rows="10")
+              div(class="ratings__container")
+                label(for='rating-score') Your rating:
+                  select(class="rating-score" name="rating-score" placeholder=reviewByUser.rating required)
                     each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                       option(value=`${i}`)= i
-                button(class="review-button" type='submit' data-id=`${gameId}` data-name=`${userId}`) Post Review
-          div(class="user-reviews")
-            h2(class="reviews__h2") User Reviews
-            ul(class="review-list")
-              each review, i in reviews
-                div.review_wrapper
-                  a(href=`/users/${userList[i]}`)
-                    li(class="new-review__username")= `${userLame[i]}'s Review` 
-                    li(class="new-review__rating")= `${review.rating}/10`
-                    li(class="new-review__review")= review.review
+                  label(for='rating-score') Your rating:
+                    select(class="rating-score" name="rating-score" required)
+                      option(value="0" disabled selected) --Please select a rating--
+                      each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                        option(value=`${i}`)= i
+                  button(class="review-button" type='submit' data-id=`${gameId}` data-name=`${userId}`) Post Review
+        div(class="user-reviews")
+          h2(class="reviews__h2") User Reviews
+          ul(class="review-list")
+            each review, i in reviews
+              div(id=`${review.id}`)
+                a(href=`/users/${userList[i]}`)
+                  li(class="new-review__username")= `${userLame[i]}'s Review`
+                li(class="new-review__rating")= `${review.rating}/10`
+                li(class="new-review__review")= review.review

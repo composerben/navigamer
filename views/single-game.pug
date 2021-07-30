@@ -2,7 +2,10 @@ extends layout.pug
 
 append head 
   link(rel="stylesheet", href="stylesheets/single-game.css")
-  script(src="/javascripts/reviews.js" type="module" defer)
+  if reviewByUser 
+    script(src="/javascripts/reviewsEditDelete.js" type="module" defer)
+  else 
+    script(src="/javascripts/reviews.js" type="module" defer)
 
 block content
   div#game__title 
@@ -47,7 +50,7 @@ block content
                     each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                       if reviewByUser.rating === i
                         option(value=`${i}` selected)= reviewByUser.rating
-                button(class="edit-button" data-id=`${gameId}` data-name=`${userId}`) Edit Review
+                button(id="edit-button" type='submit' data-id=`${gameId}` data-name=`${userId}`) Edit Review
                 button(class="delete-button" type='submit' data-id=`${gameId}` data-name=`${userId}` data-reviewId=`${reviewByUser.id}`) Delete Review 
           else
             form(action='/games/:id' method='POST' class='review-form')
@@ -55,15 +58,11 @@ block content
               textarea(class="review-text" name="review-text", cols="30", rows="10")
               div(class="ratings__container")
                 label(for='rating-score') Your rating:
-                  select(class="rating-score" name="rating-score" placeholder=reviewByUser.rating required)
+                  select(class="rating-score" name="rating-score" required)
+                    option(value="0" disabled selected) --Please select a rating--
                     each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                       option(value=`${i}`)= i
-                  label(for='rating-score') Your rating:
-                    select(class="rating-score" name="rating-score" required)
-                      option(value="0" disabled selected) --Please select a rating--
-                      each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                        option(value=`${i}`)= i
-                  button(class="review-button" type='submit' data-id=`${gameId}` data-name=`${userId}`) Post Review
+                button(class="review-button" type='submit' data-id=`${gameId}` data-name=`${userId}`) Post Review
         div(class="user-reviews")
           h2(class="reviews__h2") User Reviews
           ul(class="review-list")

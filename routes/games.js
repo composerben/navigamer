@@ -194,6 +194,26 @@ router.post(
 // EDIT ROUTE
 router.put("/:id(\\d+)", asyncHandler( async (req, res) => {
   console.log(req.body);
+  const { gameId, rating, review, reviewId } = req.body;
+  const { userId } = req.session.auth;
+
+  const currentReview = await db.Review.findByPk(reviewId);
+  currentReview.rating = rating;
+  currentReview.review = review;
+  
+  const validatorErrors = validationResult(req);
+
+  if (validatorErrors.isEmpty()) {
+    await currentReview.save();
+    res.json({ review, rating, reviewId });
+  } else {
+    const errors = validatorErrors.array().map((error) => error.msg);
+    res.render("single-game", {
+      title: "Game Page",
+      gameReview,
+      errors,
+    });
+  }
 }));
 
 // DELETE ROUTE

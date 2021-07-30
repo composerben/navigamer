@@ -1,6 +1,4 @@
 const addReviewButton = document.querySelector(".review-button");
-const editButton = document.querySelector('.edit-button');
-const deleteReviewBtn = document.querySelector(".delete-button");
 const reviewText = document.querySelector(".review-text");
 const reviewRating = document.querySelector(".rating-score");
 const gameId = addReviewButton.getAttribute("data-id");
@@ -36,8 +34,6 @@ const postReview = (data) => {
   newLink.appendChild(newLame);
   reviewList.appendChild(newRating);
   reviewList.appendChild(newReview);
-  // newReviewContainer.appendChild(newReview);
-  // reviews.appendChild(newReviewContainer);
 };
 
 const submitReview = async (event) => {
@@ -86,48 +82,4 @@ const submitReview = async (event) => {
 
 addReviewButton.addEventListener("click", submitReview);
 
-// Delete Review
-if (deleteReviewBtn) {
-  deleteReviewBtn.addEventListener("click", async (e) => {
-    e.preventDefault();
 
-    const reviewId = deleteReviewBtn.getAttribute("data-reviewId");
-    const reviewSelector = document.getElementById(`${reviewId}`);
-
-    addReviewContainer.remove();
-    ratingContainer.remove();
-    reviewSelector.remove();
-  
-    const thanksDiv = document.createElement('div');
-    thanksDiv.classList.add('thanksDiv')
-    const thanksElement = document.createElement('h1');
-    thanksElement.innerHTML = 'Comment Deleted';
-    thanksElement.classList.add('review__add');
-    thanksDiv.appendChild(thanksElement);
-    reviewsContainer.insertBefore(thanksDiv, userReviewsContainer);
-
-    const deleteFetch = await fetch(`/games/${gameId}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ reviewId }),
-    });
-
-  });
-}
-
-// Edit Review
-if (editButton) {
-  editButton.addEventListener(async (e) => {
-    e.preventDefault();
-    console.log(gameId);
-
-    const editFetch = await fetch(`/games/${gameId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ gameId, rating, review }),
-  })
-}

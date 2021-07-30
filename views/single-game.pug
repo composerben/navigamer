@@ -50,6 +50,8 @@ block content
                     each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                       if reviewByUser.rating === i
                         option(value=`${i}` selected)= reviewByUser.rating
+                      else 
+                        option(value=`${i}`)= i 
                 button(id="edit-button" type='submit' data-id=`${gameId}` data-name=`${userId}`) Edit Review
                 button(class="delete-button" type='submit' data-id=`${gameId}` data-name=`${userId}` data-reviewId=`${reviewByUser.id}`) Delete Review 
           else

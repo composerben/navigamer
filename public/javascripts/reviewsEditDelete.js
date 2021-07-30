@@ -62,5 +62,6 @@ editButton.addEventListener('click', async (e) => {
   console.log(data);
 
   const reviewDiv = document.getElementById(reviewId);
-  console.log(reviewDiv);
+  reviewDiv.childNodes[1].innerHTML = `${rating}/10`;
+  reviewDiv.childNodes[2].innerHTML = review;
 });

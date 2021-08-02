@@ -13,6 +13,10 @@ module.exports = {
         type: Sequelize.STRING(255),
         unique: true,
       },
+      bio: {
+        allowNull: false,
+        type: Sequelize.TEXT,
+      },
       releaseDate: {
         allowNull: false,
         type: Sequelize.DATEONLY,

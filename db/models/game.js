@@ -2,6 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Game = sequelize.define('Game', {
     gameName: DataTypes.STRING,
+    bio: DataTypes.TEXT,
     releaseDate: DataTypes.DATEONLY,
     developer: DataTypes.STRING,
     imgUrl: DataTypes.STRING

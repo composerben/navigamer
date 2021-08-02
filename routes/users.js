@@ -80,11 +80,12 @@ router.get("/:id/add-games-to-gameshelf", requireAuth, asyncHandler(async (req, 
   });
 }));
 
+// ADD GAME TO GAMESHELF
 router.post("/:id/add-games-to-gameshelf", requireAuth, asyncHandler(async (req, res) => {
   const { games, gameshelves } = req.body;
   const userId = req.session.auth.userId;
 
-  if (games.length > 1) {
+  if (Array.isArray(games)) {
     async function savePlatforms(input) {
       input.forEach(async (element) => {
         const gameToGameshelf = db.GameToGameshelf.build({
@@ -97,7 +98,8 @@ router.post("/:id/add-games-to-gameshelf", requireAuth, asyncHandler(async (req,
     }
     savePlatforms(games);
   } else {
-    const gameToGameshelf = db.GameToGameshelf.build({
+    console.log('HERE')
+    const gameToGameshelf = await db.GameToGameshelf.build({
       gameId: games,
       gameshelfId: gameshelves
     })

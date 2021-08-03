@@ -58,13 +58,15 @@ router.post(
   csrfProtection,
   addGameValidators,
   asyncHandler(async (req, res) => {
-    const { gameName, releaseDate, developer, imgUrl, platformId } = req.body;
+    console.log(req.body)
+    const { gameName, bio, releaseDate, developer, imgUrl, platformId } = req.body;
     const sessionUser = req.session.auth;
     const game = db.Game.build({
       gameName,
       releaseDate,
       developer,
       imgUrl,
+      bio
     });
 
     const validatorErrors = validationResult(req);

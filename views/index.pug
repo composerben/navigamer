@@ -10,15 +10,15 @@ block content
     p This resource is designed entirely with YOU, the gamer, in mind!  We are on a mission to be your go-to website for everything gaming related!  
     p Please help us out by adding your favorite games to our system and leaving reviews to help others grow their own collection!
   div#mainGames__title
-    h2 10 Most Recently Reviewed Games
+    h2 10 Most Recently Added Games
   div#test_container
     div#mainGames__container
-      each game in gamesList
+      each game, i in gamesList
         div.mainBody__outsideGameCard
           a(href=`../games/${game.id}`)
             div.mainBody__gameCard 
               div.mainGameCard__image 
                 img(src=game.imgUrl)
               div.mainGameCard__text
-                h2 Average Rating
                 h2= game.gameName
+                h3= avgRatings[i]

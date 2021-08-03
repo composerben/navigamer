@@ -18,12 +18,41 @@ router.use(express.static(path.join(__dirname, '../assets')));
 /* GET home page. */
 
 router.get("/", asyncHandler(async (req, res, next) => {
-  const gamesList = await db.Game.findAll({ limit: 10 })
+  const gamesList = await db.Game.findAll({
+    include: {
+      model: db.Review,
+    },
+    order: [['createdAt', 'DESC']],
+    limit: 10
+  })
+
   const sessionUser = req.session.auth;
+
+  let avgRatings = []
+  gamesList.forEach(game => {
+    // console.log(game.Reviews)
+
+    let count = 0;
+    let total = 0;
+    game.Reviews.forEach(review => {
+      // console.log(review.rating)
+      total += review.rating;
+      count++
+    })
+    if (count === 0) {
+      avgRatings.push('No reviews yet!')
+    } else {
+      avgRatings.push(`Average ${Math.floor(total/count)}/10`)
+    }
+  })
+
+  console.log(avgRatings);
+  console.log(gamesList);
 
   res.render("index", {
     title: "Welcome to Navigamer",
     gamesList,
+    avgRatings,
     sessionUser
   });
 }));

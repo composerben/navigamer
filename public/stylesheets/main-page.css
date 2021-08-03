@@ -60,6 +60,7 @@
   text-align: center;
   font-size: 12px;
   justify-content: center;
+  margin: 10px;
 }
 
 .mainGameCard__text h2, a {
@@ -83,4 +84,3 @@
 #footer__container {
   position: relative;
 }
-

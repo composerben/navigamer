@@ -43,6 +43,11 @@
   border-radius: 10px;
 }
 
+.addGame__inputBlock textarea {
+  margin-top: 5px;
+  border-radius: 10px;
+}
+
 #addGame__btn {
   font-weight: bold;
   border-radius: 10px;

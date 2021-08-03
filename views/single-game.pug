@@ -14,20 +14,21 @@ block content
     div#game__container
       div#gameImg__container
         img(src=game.imgUrl)
-      div#gameData
+      div#gameBio
+        h3.header Bio
+        h4= game.bio 
+      div#bottomData
+        <h2>Other Info</h2>
         div#gameRelease
-          h2 Release Date
-          h3= game.releaseDate
+          h3.header Release Date
+          h4= game.releaseDate
         div#gameDeveloper
-          h2 Developer
-          h3= game.developer
+          h3.header Developer
+          h4= game.developer
         div#gamePlatforms
-          h2 Platforms
+          h3.header Platforms
           each platform in platforms
-            h3= platform.name
-        div#gameBio
-          h2 Bio
-          h3= game.bio 
+            h4= platform.name
     div(class="reviews__container")
       if !user
         h1 Please log in to leave a review 

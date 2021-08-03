@@ -20,8 +20,8 @@
   margin: auto;
   margin-bottom: 20px;
   display: flex;
-  width: 60vw;
-  height: 700px;
+  width: 70vw;
+  height: fit-content;
   background-color: rgba(1, 32, 73, 0.8);
   border: 1px solid #909090;
   border-radius: 10px;
@@ -31,7 +31,7 @@
 
 #gameImg__container {
   display: block;
-  height: 90%;
+  height: fit-content;
   width: auto;
   align-content: center;
   justify-content: center;
@@ -39,21 +39,14 @@
 }
 
 #gameImg__container img {
-  height: 592px;
-  width: 495px;
+  height: 500px;
+  width: auto;
+  max-width: 450px;
   margin-left: 20px;
   margin-right: 20px;
-  box-shadow: -20px 20px 10px 0px rgb(0 0 0);
+  box-shadow: -5px 3px 1px 3px rgb(0 0 0);
   border-radius: 10px;
   border: 2px solid rgb(0, 0, 0);
-}
-
-#gameData {
-  display: grid;
-  margin: 50px;
-  width: 2000px;
-  color: white;
-  justify-content: center;
 }
 
 #gameRelease,
@@ -62,6 +55,17 @@
 #gameBio {
   display: inline-block;
   margin: 20px;
+  color: white;
+}
+
+#gameBio {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+}
+
+.header {
+  margin-bottom: 5px;
 }
 
 .reviews__container {
@@ -171,6 +175,10 @@ a {
 .review_wrapper a {
   display: flex;
   width: fit-content;
+}
+
+#rightSideData {
+  width: 20%;
 }
 
 #footer__container {

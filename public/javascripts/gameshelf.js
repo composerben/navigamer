@@ -7,7 +7,9 @@ const divUserId = document.querySelector("#gameshelf__container");
 const gamecardDisplayDiv = document.querySelector("#gameshelfGames__container");
 let selectShelf = document.querySelectorAll(".gameshelf__div");
 const selecth2 = document.querySelector(".gameshelf__h2");
-// const userId = addReviewButton.getAttribute("data-id");
+const removeShelfBtn = document.querySelector('#removeGameshelf__btn');
+
+let selectedShelf;
 
 // CACHE DOM FOR GAMECARD
 const outsideCard = document.querySelector(".body__outsideGameCard");
@@ -25,12 +27,12 @@ function addShelfListeners() {
       const shelfId = event.target.getAttribute("data-id");
       const userId = divUserId.getAttribute("data-id");
 
+      selectedShelf = shelfId;
+
       const getGames = await fetch(`/users/${userId}/gameshelves/${shelfId}`);
       const res = await getGames.json();
 
-      // if (res.gamesArr.length < 1) {
       gamecardDisplayDiv.innerHTML = "";
-      // }
 
       res.gamesArr.forEach((game) => {
         const div = document.createElement("div");
@@ -48,7 +50,6 @@ function addShelfListeners() {
         const text = document.createElement("h2");
         text.innerHTML = game.gameName;
 
-        // gamecardDisplayDiv.innerHTML = '';
         div.appendChild(anchor);
         anchor.appendChild(bodyDiv);
         bodyDiv.appendChild(imageDiv);
@@ -96,5 +97,29 @@ addShelfBtn.addEventListener("click", (event) => {
     return;
   } else {
     const data = createShelf(newStr);
+  }
+});
+
+//REMOVE GAMESHELF
+removeShelfBtn.addEventListener('click', async (e) => {
+  e.preventDefault();
+
+  gamecardDisplayDiv.innerHTML = '<h1>Gameshelf Deleted!</h1>';
+  selectShelf.forEach(shelf => {
+    console.dir(shelf.dataset.id)
+    if (shelf.dataset.id === selectedShelf) {
+      shelf.remove();
+    }
+  })
+  // console.dir(selectShelf);
+
+  if (selectedShelf !== undefined) {
+    const res = await fetch("/users/deleteGameshelf/", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ selectedShelf }),
+    });
   }
 });

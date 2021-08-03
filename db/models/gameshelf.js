@@ -8,10 +8,10 @@ module.exports = (sequelize, DataTypes) => {
     const shelfMapping = {
       through: 'GameToGameshelf',
       otherKey: 'gameId',
-      foreignKey: 'gameshelfId'
+      foreignKey: 'gameshelfId',
     }
     Gameshelf.belongsToMany(models.Game, shelfMapping);
-    Gameshelf.belongsTo(models.User, { foreignKey: 'userId' })
+    Gameshelf.belongsTo(models.User, { foreignKey: 'userId' });
   };
   return Gameshelf;
 };

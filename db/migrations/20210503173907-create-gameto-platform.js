@@ -11,12 +11,12 @@ module.exports = {
       gameId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'Games' }
+        references: { model: 'Games' },
       },
       platformId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'Platforms' }
+        references: { model: 'Platforms' },
       },
       createdAt: {
         allowNull: false,

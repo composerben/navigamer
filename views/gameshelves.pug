@@ -26,6 +26,7 @@ block content
         if gameshelfOwner
           input(type="text", name="addGameshelf" id='newGameShelf__input' required)
           button(type="submit" id="addGameshelf__btn") Create Gameshelf
+          button(type="submit" id="removeGameshelf__btn") REMOVE Gameshelf
           div#addGame
             a(href=`/users/${user.id}/add-games-to-gameshelf`) 
               h1 +

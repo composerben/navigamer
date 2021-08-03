@@ -129,4 +129,16 @@ router.get("/:userId/gameshelves/:gameshelfId", requireAuth, asyncHandler(async 
   res.json({ gameshelves, gamesArr })
 }));
 
+
+// DELETE GAMESHELF
+router.delete("/deleteGameshelf/", requireAuth, asyncHandler(async (req, res) => {
+  // const sessionUser = req.session.auth;
+  const { selectedShelf } = req.body
+
+  let gameshelf = await db.Gameshelf.findByPk(selectedShelf);
+  gameshelf.destroy();
+
+  return gameshelf;
+}));
+
 module.exports = router;

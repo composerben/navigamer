@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     const shelfMapping = {
       through: 'GameToGameshelf',
       otherKey: 'gameshelfId',
-      foreignKey: 'gameId'
+      foreignKey: 'gameId',
+      onDelete: 'CASCADE'
     }
     const platformMapping = {
       through: 'GameToPlatform',

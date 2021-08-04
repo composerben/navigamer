@@ -42,12 +42,9 @@ router.get("/", asyncHandler(async (req, res, next) => {
     if (count === 0) {
       avgRatings.push('No reviews yet!')
     } else {
-      avgRatings.push(`Average ${Math.floor(total/count)}/10`)
+      avgRatings.push(`Average ${(total/count).toFixed(1)}/10`);
     }
   })
-
-  console.log(avgRatings);
-  console.log(gamesList);
 
   res.render("index", {
     title: "Welcome to Navigamer",

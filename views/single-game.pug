@@ -11,26 +11,25 @@ block content
   div#game__title 
     h1= game.gameName
   div#gameBody__container
-    div#game__container
-      div#game__main
-        div#gameImg__container
-          img(src=game.imgUrl)
-        div#gameBio
-          h3.header Bio
-          h3= game.bio 
-      div#bottomData
-        <h1>Other Info</h1>
-        div#data__info
-          div#gameRelease
-            h3.header Release Date
-            h4= game.releaseDate
-          div#gameDeveloper
-            h3.header Developer
-            h4= game.developer
-          div#gamePlatforms
-            h3.header Platforms
-            each platform in platforms
-              h4= platform.name
+    div#main__content
+      div#gameImg__container
+        img(src=game.imgUrl)
+      div#game__container
+        div#game__main
+          div#data__left
+            div#gameRelease
+              h3.header Release Date
+              h4= game.releaseDate
+            div#gameDeveloper
+              h3.header Developer
+              h4= game.developer
+            div#gamePlatforms
+              h3.header Platform(s)
+              each platform in platforms
+                h4= platform.name
+          div#gameBio
+            h3.header Bio
+            h4= game.bio 
     div(class="reviews__container")
       if !user
         h1 Please log in to leave a review 
@@ -70,10 +69,13 @@ block content
                 button(class="review-button" type='submit' data-id=`${gameId}` data-name=`${userId}`) Post Review
         div(class="user-reviews")
           h2(class="reviews__h2") User Reviews
-          ul(class="review-list")
-            each review, i in reviews
-              div(id=`${review.id}`)
-                a(href=`/users/${userList[i]}`)
-                  li(class="new-review__username")= `${userLame[i]}'s Review`
-                li(class="new-review__rating")= `${review.rating}/10`
-                li(class="new-review__review")= review.review
+          if !reviews.length
+            h2#no__reviews No reviews to display!
+          else 
+            ul(class="review-list")
+              each review, i in reviews
+                div(id=`${review.id}`)
+                  a(href=`/users/${userList[i]}`)
+                    li(class="new-review__username")= `${userLame[i]}'s Review`
+                  li(class="new-review__rating")= `${review.rating}/10`
+                  li(class="new-review__review")= review.review

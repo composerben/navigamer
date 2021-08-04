@@ -18,27 +18,22 @@
 
 #game__container {
   display: flex;
-  flex-direction: column;
-  margin: auto;
-  margin-bottom: 20px;
-  width: 70vw;
-  height: fit-content;
   background-color: rgba(1, 32, 73, 0.8);
   border: 1px solid #909090;
   border-radius: 10px;
   padding: 20px;
-  align-content: center;
+  width: 40vw;
 }
 
 #game__main {
   display: flex;
+  width: fit-content;
 }
 
 #gameImg__container {
   display: flex;
   height: fit-content;
   justify-content: center;
-  width: 50%;
 }
 
 #gameImg__container img {
@@ -63,9 +58,9 @@
 #gameBio {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 40%;
+  justify-content: flex-start;
   max-height: 500px;
+  margin: 50px;
   overflow-y: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;  /* mozilla */
@@ -86,8 +81,7 @@
   display: flex;
   flex-direction: column;
   align-content: center;
-  width: 70vw;
-  height: 700px;
+  width: 60vw;
   background-color: rgba(1, 32, 73, 0.8);
   border: 1px solid #909090;
   border-radius: 5px;
@@ -190,19 +184,26 @@ a {
   width: fit-content;
 }
 
-#bottomData {
+#data__left {
   display: flex;
   flex-direction: column;
   color: white;
-  text-align: center;
   margin: 30px;
-}
-
-#data__info {
-  display: inline-flex;
-  justify-content: space-between;
 }
 
 #footer__container {
   position: relative;
+}
+
+#main__content {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+#no__reviews {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  padding-bottom: 50px;
 }

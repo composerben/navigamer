@@ -17,9 +17,10 @@
 }
 
 #game__container {
+  display: flex;
+  flex-direction: column;
   margin: auto;
   margin-bottom: 20px;
-  display: flex;
   width: 70vw;
   height: fit-content;
   background-color: rgba(1, 32, 73, 0.8);
@@ -29,13 +30,15 @@
   align-content: center;
 }
 
+#game__main {
+  display: flex;
+}
+
 #gameImg__container {
-  display: block;
+  display: flex;
   height: fit-content;
-  width: auto;
-  align-content: center;
   justify-content: center;
-  align-self: center;
+  width: 50%;
 }
 
 #gameImg__container img {
@@ -53,7 +56,6 @@
 #gameDeveloper,
 #gamePlatforms,
 #gameBio {
-  display: inline-block;
   margin: 20px;
   color: white;
 }
@@ -61,8 +63,19 @@
 #gameBio {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 40%;
+  max-height: 500px;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;  /* mozilla */
 }
+
+#gameBio::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome browsers */
+}
+
+
 
 .header {
   margin-bottom: 5px;
@@ -177,8 +190,17 @@ a {
   width: fit-content;
 }
 
-#rightSideData {
-  width: 20%;
+#bottomData {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  text-align: center;
+  margin: 30px;
+}
+
+#data__info {
+  display: inline-flex;
+  justify-content: space-between;
 }
 
 #footer__container {

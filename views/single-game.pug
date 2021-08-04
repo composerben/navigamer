@@ -12,23 +12,25 @@ block content
     h1= game.gameName
   div#gameBody__container
     div#game__container
-      div#gameImg__container
-        img(src=game.imgUrl)
-      div#gameBio
-        h3.header Bio
-        h4= game.bio 
+      div#game__main
+        div#gameImg__container
+          img(src=game.imgUrl)
+        div#gameBio
+          h3.header Bio
+          h3= game.bio 
       div#bottomData
-        <h2>Other Info</h2>
-        div#gameRelease
-          h3.header Release Date
-          h4= game.releaseDate
-        div#gameDeveloper
-          h3.header Developer
-          h4= game.developer
-        div#gamePlatforms
-          h3.header Platforms
-          each platform in platforms
-            h4= platform.name
+        <h1>Other Info</h1>
+        div#data__info
+          div#gameRelease
+            h3.header Release Date
+            h4= game.releaseDate
+          div#gameDeveloper
+            h3.header Developer
+            h4= game.developer
+          div#gamePlatforms
+            h3.header Platforms
+            each platform in platforms
+              h4= platform.name
     div(class="reviews__container")
       if !user
         h1 Please log in to leave a review 

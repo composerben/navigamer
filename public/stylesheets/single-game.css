@@ -207,3 +207,10 @@ a {
   margin: 20px;
   padding-bottom: 50px;
 }
+
+.reviews__no-user {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 30px;
+}

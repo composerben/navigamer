@@ -6,8 +6,10 @@
 }
 
 .login-form-container {
+  display: flex;
+  justify-content: center;
   width: 600px;
-  margin: 5% auto;
+  margin: 2% auto 5% auto;
 }
 
 .login-form {
@@ -67,7 +69,6 @@
   font-weight: bold;
   font-size: 1em;
   text-transform: uppercase;
-
   transition: background-color 0.2s;
 }
 
@@ -75,11 +76,15 @@
   background-color: rgba(34, 255, 0, 0.7);;
 }
 
+.login-error {
+  display: flex;
+  justify-content: center;
+}
+
 .login-error p,
 .errors-ul {
-  color: white;
+  color:rgb(255, 255, 255);
   width: 400px;
-  margin: 2% auto;
   text-transform: uppercase;
   font-family: sans-serif;
   font-weight: bold;
@@ -87,14 +92,14 @@
 
 .login-error p {
   font-size: larger;
-  /* text-decoration: underline; */
   padding-left: 52px;
 }
 
 .errors-ul {
   border: 2px solid black;
   border-radius: 10px;
-  background: rgba(255, 0, 0, 0.858);
+  background-color: rgba(1, 32, 73, 0.8);
+  padding: 10px;
 }
 
 .error-li {
@@ -109,30 +114,6 @@
 #footer__container {
   position: fixed;
 }
-
-/* a {
-  text-decoration: none;
-} */
-
-/* .demo-button {
-  display: flex;
-  background: rgb(255, 255, 255);
-  color: black;
-  padding-top: 2em;
-  margin-top: 0.5em;
-  margin-left: 20px;
-  border: 0;
-  padding: 5px 15px;
-  justify-content: center;
-  border-radius: 15px;
-  font-family: monospace;
-  font-weight: bold;
-  font-weight: bold;
-  font-size: 1em;
-  text-transform: uppercase;
-  transition: background-color 0.2s;
-  text-decoration: none;
-} */
 
 .demo-button:hover {
   background-color: rgba(34, 255, 0, 0.7);

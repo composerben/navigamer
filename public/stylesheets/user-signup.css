@@ -10,8 +10,10 @@
 }
 
 .signup-form-container {
+  display: flex;
+  justify-content: center;
   width: 600px;
-  margin: 5% auto;
+  margin: 2% auto 5% auto;
 }
 
 .signup-form {
@@ -71,7 +73,6 @@
   font-weight: bold;
   font-size: 1em;
   text-transform: uppercase;
-
   transition: background-color 0.2s;
 }
 
@@ -79,11 +80,15 @@
   background-color: rgba(34, 255, 0, 0.7);
 }
 
+.signup-error {
+  display: flex;
+  justify-content: center;
+}
+
 .signup-error p,
 .errors-ul {
   color:rgb(255, 255, 255);
   width: 400px;
-  margin: 2% auto;
   text-transform: uppercase;
   font-family: sans-serif;
   font-weight: bold;
@@ -91,14 +96,15 @@
 
 .signup-error p {
   font-size: larger;
-  /* text-decoration: underline; */
-  padding-left: 52px;
+  padding-left: 22px;
+  margin: 20px;
 }
 
 .errors-ul {
   border: 2px solid black;
   border-radius: 10px;
-  background: rgba(255, 0, 0, 0.858);
+  background-color: rgba(1, 32, 73, 0.8);
+  padding: 10px;
 }
 
 .error-li {

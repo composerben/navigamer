@@ -32,8 +32,10 @@ block content
             h4= game.bio 
     div(class="reviews__container")
       if !user
-        h1 Please log in to leave a review 
-        a(href="/login") Click here to login
+        div.reviews__no-user
+          h1 You must be logged in to leave a review!
+          //- a(href="/login")
+          //-   h2 Click here to login!
       else
         if errors
           div(class="review-error")
@@ -67,15 +69,15 @@ block content
                     each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                       option(value=`${i}`)= i
                 button(class="review-button" type='submit' data-id=`${gameId}` data-name=`${userId}`) Post Review
-        div(class="user-reviews")
-          h2(class="reviews__h2") User Reviews
-          if !reviews.length
-            h2#no__reviews No reviews to display!
-          else 
-            ul(class="review-list")
-              each review, i in reviews
-                div(id=`${review.id}`)
-                  a(href=`/users/${userList[i]}`)
-                    li(class="new-review__username")= `${userLame[i]}'s Review`
-                  li(class="new-review__rating")= `${review.rating}/10`
-                  li(class="new-review__review")= review.review
+      div(class="user-reviews")
+        h2(class="reviews__h2") User Reviews
+        if !reviews.length
+          h2#no__reviews No reviews to display!
+        else 
+          ul(class="review-list")
+            each review, i in reviews
+              div(id=`${review.id}`)
+                a(href=`/users/${userList[i]}`)
+                  li(class="new-review__username")= `${userLame[i]}`
+                li(class="new-review__rating")= `${review.rating}/10`
+                li(class="new-review__review")= review.review
